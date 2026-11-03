@@ -332,7 +332,19 @@ function profile(t, div) {
   const boxPts = all.filter(g => g.box).reduce((s, g) => s + (g.box.totals ? g.box.totals.TP : g.pf), 0);
   t.players = Object.values(P).map(p => ({ ...p, ppg: p.gp ? p.tp / p.gp : 0, share: boxPts ? p.tp / boxPts : 0, fpg: p.gp ? p.f / p.gp : 0, ptsFrom3: p.p3 * 3, ftm: p.p1 })).sort((a, b) => b.tp - a.tp || b.ppg - a.ppg);
   t.boxGames = boxGames; t.boxPts = boxPts;
-  const tot = all.filter(g => g.box && g.box.totals).reduce((s, g) => ({ p1: s.p1 + (g.box.totals['1PT'] || 0), p2: s.p2 + (g.box.totals['2PT'] || 0), p3: s.p3 + (g.box.totals['3PT'] || 0), f: s.f + (g.box.totals.F || 0) }), { p1: 0, p2: 0, p3: 0, f: 0 });
+  let tot = all.filter(g => g.box && g.box.totals).reduce((s, g) => ({ p1: s.p1 + (g.box.totals['1PT'] || 0), p2: s.p2 + (g.box.totals['2PT'] || 0), p3: s.p3 + (g.box.totals['3PT'] || 0), f: s.f + (g.box.totals.F || 0) }), { p1: 0, p2: 0, p3: 0, f: 0 });
+  // Box scores served to the phone carry only points and fouls; the grade statistics page carries the 1/2/3-point split
+  const hasSplit = all.some(g => g.box && g.box.headers && g.box.headers.some(h => /1PT/i.test(h)));
+  const gs = (DATA.gradeStats || []).filter(r => r.team === t.name);
+  if (!hasSplit && gs.length) {
+    const f = tot.f;
+    tot = { p1: 0, p2: 0, p3: 0, f };
+    for (const p of t.players) {
+      const row = gs.find(r => r.name === p.name);
+      if (row) { p.p1 = row['1PT'] || 0; p.p2 = row['2PT'] || 0; p.p3 = row['3PT'] || 0; }
+      tot.p1 += p.p1; tot.p2 += p.p2; tot.p3 += p.p3;
+    }
+  }
   t.mix = tot; t.mixPts = tot.p1 + tot.p2 * 2 + tot.p3 * 3;
   t.fpg = boxGames ? tot.f / boxGames : 0; t.ftpg = boxGames ? tot.p1 / boxGames : 0; t.threespg = boxGames ? tot.p3 / boxGames : 0;
   const scorers = t.players.filter(p => p.tp > 0);
