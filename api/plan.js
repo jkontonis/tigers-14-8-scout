@@ -9,7 +9,14 @@ export default async function handler(req, res) {
     { id: 'ladder', url: grade + '/ladder' },
     { id: 'stats', url: grade + '/statistics' },
   ];
-  if (req.query.test) {
+  // Until storage holds a fixture page, include a known completed game so the first run shows what PlayHQ serves the phone
+  let test = !!req.query.test;
+  if (!test && process.env.BLOB_READ_WRITE_TOKEN) {
+    const { list } = await import('@vercel/blob');
+    const r = await list({ prefix: 'pages/fixture', limit: 1 });
+    test = !r.blobs.length;
+  } else if (!process.env.BLOB_READ_WRITE_TOKEN) test = true;
+  if (test) {
     urls.push({ id: 'finals', url: grade + '/F1' });
     // Known completed game with a published box score, used to check what PlayHQ serves the phone
     urls.push({ id: 'testgame', url: 'https://www.playhq.com/basketball-victoria/org/victorian-junior-basketball-league-vjbl/victorian-junior-basketball-league-2023/20-boys-vjl3/game-centre/c2fdfc4d' });
