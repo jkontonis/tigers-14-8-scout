@@ -6,5 +6,5 @@
   "ourShortName": "Tigers 14.8",
   "timezone": "Australia/Melbourne",
   "passcode": "tigers148",
-  "dataUrl": "https://raw.githubusercontent.com/jkontonis/tigers-14-8-scout/main/data/latest.json"
+  "dataUrl": "/api/data"
 }

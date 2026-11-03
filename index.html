@@ -237,7 +237,7 @@ async function loadConfig() {
   CONFIG = await r.json();
 }
 async function loadData() {
-  const url = (CONFIG.dataUrl || '/data/latest.json') + (CONFIG.dataUrl ? '?t=' + Math.floor(Date.now() / 60000) : '');
+  const url = (CONFIG.dataUrl || "/data/latest.json") + "?k=" + encodeURIComponent(CONFIG.passcode || "") + "&t=" + Date.now();
   const r = await fetch(url, { cache: 'no-store' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
