@@ -1,0 +1,7 @@
+{
+  "name": "tigers-14-8-scout-scraper",
+  "private": true,
+  "type": "module",
+  "scripts": { "scrape": "node scrape.mjs" },
+  "dependencies": { "playwright": "1.63.0" }
+}

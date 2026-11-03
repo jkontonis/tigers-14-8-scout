@@ -1,0 +1,50 @@
+name: Read PlayHQ
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scraper/**', '.github/workflows/scrape.yml', 'config.json']
+  schedule:
+    # Times are UTC. Melbourne (AEDT) is UTC+11.
+    # Fri 6 Nov 19:00-22:59 AEDT
+    - cron: '*/5 8-11 6 11 *'
+    # Sat 7 Nov 07:00-10:59 AEDT (Fri 20:00-23:59 UTC) and 11:00-22:59 AEDT (Sat 00:00-11:59 UTC)
+    - cron: '*/5 20-23 6 11 *'
+    - cron: '*/5 0-11 7 11 *'
+    # Sun 8 Nov 07:00-10:59 AEDT (Sat 20:00-23:59 UTC) and 11:00-19:59 AEDT (Sun 00:00-08:59 UTC)
+    - cron: '*/5 20-23 7 11 *'
+    - cron: '*/5 0-8 8 11 *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: read-playhq
+  cancel-in-progress: false
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        working-directory: scraper
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Read PlayHQ
+        run: node scraper/scrape.mjs
+      - name: Commit data if changed
+        run: |
+          git config user.name "playhq-reader"
+          git config user.email "playhq-reader@users.noreply.github.com"
+          git add data/latest.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "data: $(date -u +'%Y-%m-%dT%H:%MZ')"
+          git pull --rebase origin main || true
+          git push
