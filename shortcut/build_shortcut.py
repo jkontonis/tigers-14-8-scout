@@ -28,8 +28,12 @@ def get_url(url, u=None, method="GET", body_file=None):
     a = {"WFWorkflowActionIdentifier": "is.workflow.actions.downloadurl",
          "WFWorkflowActionParameters": {"UUID": u or uid(), "WFURL": url, "WFHTTPMethod": method, "ShowHeaders": False}}
     if method == "POST":
-        a["WFWorkflowActionParameters"]["WFHTTPBodyType"] = "File"
-        a["WFWorkflowActionParameters"]["WFRequestVariable"] = body_file
+        # JSON body {"html": <base64 text>}
+        a["WFWorkflowActionParameters"]["WFHTTPBodyType"] = "JSON"
+        a["WFWorkflowActionParameters"]["WFJSONValues"] = {"Value": {"WFDictionaryFieldValueItems": [{"WFItemType": 0,
+            "WFKey": {"Value": {"string": "html", "attachmentsByRange": {}}, "WFSerializationType": "WFTextTokenString"},
+            "WFValue": {"Value": {"string": "\ufffc", "attachmentsByRange": {"{0, 1}": body_file["Value"]}}, "WFSerializationType": "WFTextTokenString"}}]},
+            "WFSerializationType": "WFDictionaryFieldValue"}
         a["WFWorkflowActionParameters"]["Advanced"] = True
     actions.append(a)
     return a["WFWorkflowActionParameters"]["UUID"]
@@ -46,8 +50,11 @@ def fetch_and_post_loop(list_ref):
                     "WFWorkflowActionParameters": {"GroupingIdentifier": gid, "WFControlFlowMode": 0, "WFInput": list_ref}})
     url_u = get_key("url", var_ref("Repeat Item"))
     page_u = get_url(text_with("", out_ref(url_u, "Dictionary Value")))
+    b64_u = uid()
+    actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.base64encode",
+                    "WFWorkflowActionParameters": {"UUID": b64_u, "WFEncodeMode": "Encode", "WFBase64LineBreakMode": "None", "WFInput": out_ref(page_u, "Contents of URL")}})
     id_u = get_key("id", var_ref("Repeat Item"))
-    get_url(text_with(BASE + "/api/ingest?k=" + KEY + "&page=", out_ref(id_u, "Dictionary Value")), method="POST", body_file=out_ref(page_u, "Contents of URL"))
+    get_url(text_with(BASE + "/api/ingest?k=" + KEY + "&page=", out_ref(id_u, "Dictionary Value")), method="POST", body_file=out_ref(b64_u, "Base64 Encoded"))
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.repeat.each",
                     "WFWorkflowActionParameters": {"GroupingIdentifier": gid, "WFControlFlowMode": 2}})
 
