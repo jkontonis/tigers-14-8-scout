@@ -54,7 +54,7 @@ def fetch_and_post_loop(list_ref):
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.getwebpagecontents",
                     "WFWorkflowActionParameters": {"UUID": web_u, "WFInput": out_ref(url_u, "Dictionary Value")}})
     html_u = uid()
-    actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.makehtmlfromrichtext",
+    actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.gethtmlfromrichtext",
                     "WFWorkflowActionParameters": {"UUID": html_u, "WFInput": out_ref(web_u, "Contents of Web Page"), "WFMakeFullDocument": True}})
     b64_u = uid()
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.base64encode",
