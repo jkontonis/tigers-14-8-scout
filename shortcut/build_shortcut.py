@@ -49,10 +49,16 @@ def fetch_and_post_loop(list_ref):
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.repeat.each",
                     "WFWorkflowActionParameters": {"GroupingIdentifier": gid, "WFControlFlowMode": 0, "WFInput": list_ref}})
     url_u = get_key("url", var_ref("Repeat Item"))
-    page_u = get_url(text_with("", out_ref(url_u, "Dictionary Value")))
+    # Load the page with Safari's engine (renders it like the browser does), then turn it back into HTML
+    web_u = uid()
+    actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.getwebpagecontents",
+                    "WFWorkflowActionParameters": {"UUID": web_u, "WFInput": out_ref(url_u, "Dictionary Value")}})
+    html_u = uid()
+    actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.makehtmlfromrichtext",
+                    "WFWorkflowActionParameters": {"UUID": html_u, "WFInput": out_ref(web_u, "Contents of Web Page"), "WFMakeFullDocument": True}})
     b64_u = uid()
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.base64encode",
-                    "WFWorkflowActionParameters": {"UUID": b64_u, "WFEncodeMode": "Encode", "WFBase64LineBreakMode": "None", "WFInput": out_ref(page_u, "Contents of URL")}})
+                    "WFWorkflowActionParameters": {"UUID": b64_u, "WFEncodeMode": "Encode", "WFBase64LineBreakMode": "None", "WFInput": out_ref(html_u, "HTML from Rich Text")}})
     id_u = get_key("id", var_ref("Repeat Item"))
     get_url(text_with(BASE + "/api/ingest?k=" + KEY + "&page=", out_ref(id_u, "Dictionary Value")), method="POST", body_file=out_ref(b64_u, "Base64 Encoded"))
     actions.append({"WFWorkflowActionIdentifier": "is.workflow.actions.repeat.each",
