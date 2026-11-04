@@ -1,6 +1,6 @@
 // Turns the pages the phone has uploaded into latest.json, and tells the phone which game pages are still needed.
 import { authorised, CONFIG } from '../lib/common.js';
-import { ready, putText, getText as readBlob, listPaths } from '../lib/store.js';
+import { ready, putText, getText as readBlob, listPaths, envNames } from '../lib/store.js';
 import { parseFixture, parseLadder, parseGame, parseStats } from '../lib/parse.js';
 
 const isFinal = g => /final/i.test(g.status || '') && !/semi|grand/i.test(g.status || '');
@@ -10,7 +10,7 @@ async function getText(pathname) { return (await readBlob(pathname)) || ''; }
 
 export default async function handler(req, res) {
   if (!authorised(req)) { res.status(403).json({ error: 'forbidden' }); return; }
-  if (!ready()) { res.status(200).json({ ok: false, message: 'Blob storage is not connected to the project yet.', more: [] }); return; }
+  if (!ready()) { res.status(200).json({ ok: false, message: 'Blob storage is not connected to the project yet.', more: [], envNames: envNames() }); return; }
   const blobs = await listPaths('pages/');
   const pages = {};
   for (const b of blobs) pages[b.pathname.replace(/^pages\//, '').replace(/\.html$/, '')] = b;
