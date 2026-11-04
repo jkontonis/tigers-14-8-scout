@@ -5,6 +5,6 @@
     { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
     { "source": "/config.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
   ],
-  "buildCommand": "node scripts/patch-ui.mjs",
+  "buildCommand": "node scripts/patch-ui.mjs && node scripts/mobile-ui.mjs && node scripts/cache-logos.mjs",
   "outputDirectory": "."
 }
