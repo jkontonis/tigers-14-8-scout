@@ -12,9 +12,9 @@ export default async function handler(req, res) {
   // Until storage holds a fixture page, include a known completed game so the first run shows what PlayHQ serves the phone
   let test = !!req.query.test;
   if (!test && process.env.BLOB_READ_WRITE_TOKEN) {
-    const { list } = await import('@vercel/blob');
-    const r = await list({ prefix: 'pages/fixture', limit: 1 });
-    test = !r.blobs.length;
+    const { listPaths } = await import('../lib/store.js');
+    const r = await listPaths('pages/fixture');
+    test = !r.length;
   } else if (!process.env.BLOB_READ_WRITE_TOKEN) test = true;
   if (test) {
     urls.push({ id: 'finals', url: grade + '/F1' });

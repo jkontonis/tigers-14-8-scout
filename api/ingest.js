@@ -1,5 +1,6 @@
 // Receives one PlayHQ page posted by the phone. Logs what it contains and, when Blob storage is connected, keeps it.
-import { authorised, hasBlob } from '../lib/common.js';
+import { authorised } from '../lib/common.js';
+import { ready, putText } from '../lib/store.js';
 
 export const config = { api: { bodyParser: false } };
 
@@ -30,9 +31,8 @@ export default async function handler(req, res) {
   const s = body.indexOf('standing-0-data');
   if (s > 0) console.log('LADDER ' + tag + ' ' + body.slice(Math.max(0, s - 1500), s + 1500).replace(/\s+/g, ' '));
   let stored = false;
-  if (hasBlob() && body.length > 1000) {
-    const { put } = await import('@vercel/blob');
-    await put(`pages/${tag}.html`, body, { access: 'public', addRandomSuffix: false, contentType: 'text/html', cacheControlMaxAge: 60 });
+  if (ready() && body.length > 1000) {
+    await putText(`pages/${tag}.html`, body, 'text/html');
     stored = true;
   }
   res.status(200).json({ ok: true, tag, length: body.length, stored, found });

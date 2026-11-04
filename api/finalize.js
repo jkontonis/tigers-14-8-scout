@@ -1,23 +1,22 @@
 // Turns the pages the phone has uploaded into latest.json, and tells the phone which game pages are still needed.
-import { authorised, hasBlob, CONFIG } from '../lib/common.js';
+import { authorised, CONFIG } from '../lib/common.js';
+import { ready, putText, getText as readBlob, listPaths } from '../lib/store.js';
 import { parseFixture, parseLadder, parseGame, parseStats } from '../lib/parse.js';
 
 const isFinal = g => /final/i.test(g.status || '') && !/semi|grand/i.test(g.status || '');
 const started = g => (g.status && !/upcoming/i.test(g.status)) || g.homeScore != null || g.awayScore != null;
 
-async function getText(url) { const r = await fetch(url + (url.includes('?') ? '&' : '?') + 't=' + Date.now()); return r.ok ? r.text() : ''; }
+async function getText(pathname) { return (await readBlob(pathname)) || ''; }
 
 export default async function handler(req, res) {
   if (!authorised(req)) { res.status(403).json({ error: 'forbidden' }); return; }
-  if (!hasBlob()) { res.status(200).json({ ok: false, message: 'Blob storage is not connected to the project yet.', more: [] }); return; }
-  const { list, put } = await import('@vercel/blob');
-  const r = await list({ prefix: 'pages/', limit: 500 });
+  if (!ready()) { res.status(200).json({ ok: false, message: 'Blob storage is not connected to the project yet.', more: [] }); return; }
+  const blobs = await listPaths('pages/');
   const pages = {};
-  for (const b of r.blobs) pages[b.pathname.replace(/^pages\//, '').replace(/\.html$/, '')] = b;
+  for (const b of blobs) pages[b.pathname.replace(/^pages\//, '').replace(/\.html$/, '')] = b;
 
   let previous = null;
-  const prev = await list({ prefix: 'latest.json', limit: 1 });
-  if (prev.blobs.length) { try { previous = JSON.parse(await getText(prev.blobs[0].url)); } catch { previous = null; } }
+  try { const t = await readBlob('latest.json'); previous = t ? JSON.parse(t) : null; } catch { previous = null; }
 
   const out = {
     meta: { scrapedAt: new Date().toISOString(), gradeUrl: CONFIG.gradeUrl, gradeName: CONFIG.gradeName || '', tournament: CONFIG.tournament || '', ourTeam: CONFIG.ourTeam, source: 'phone-upload', warnings: [], pagesAt: {} },
@@ -29,7 +28,7 @@ export default async function handler(req, res) {
 
   const origin = new URL(CONFIG.gradeUrl).origin;
   if (pages.fixture) {
-    const html = await getText(pages.fixture.url);
+    const html = await getText(pages.fixture.pathname);
     const games = parseFixture(html, origin);
     out.meta.pagesAt.fixture = pages.fixture.uploadedAt;
     if (games.length) {
@@ -40,19 +39,19 @@ export default async function handler(req, res) {
     } else out.meta.warnings.push('Fixture page had no games');
   }
   if (pages.finals) {
-    const html = await getText(pages.finals.url);
+    const html = await getText(pages.finals.pathname);
     const games = parseFixture(html, origin).map(g => ({ ...g, pool: 'Finals' }));
     const ids = new Set(out.fixture.map(g => g.id));
     for (const g of games) if (!ids.has(g.id)) out.fixture.push(g);
   }
   if (pages.ladder) {
-    const html = await getText(pages.ladder.url);
+    const html = await getText(pages.ladder.pathname);
     const groups = parseLadder(html);
     out.meta.pagesAt.ladder = pages.ladder.uploadedAt;
     if (groups.some(g => g.rows.length)) out.ladder = groups;
   }
   if (pages.stats) {
-    const html = await getText(pages.stats.url);
+    const html = await getText(pages.stats.pathname);
     const rows = parseStats(html);
     out.meta.pagesAt.stats = pages.stats.uploadedAt;
     if (rows.length) out.gradeStats = rows;
@@ -61,7 +60,7 @@ export default async function handler(req, res) {
     if (!tag.startsWith('game-')) continue;
     const id = tag.slice(5);
     const fx = out.fixture.find(g => g.id === id);
-    const html = await getText(b.url);
+    const html = await getText(b.pathname);
     const d = parseGame(html);
     if (!d.periods.length && !d.boxes.length) { out.meta.warnings.push('Game page had no stats: ' + id); continue; }
     out.games[id] = { id, url: fx ? fx.url : '', fetchedAt: b.uploadedAt, ...d, status: fx && isFinal(fx) ? 'FINAL' : (d.status || (fx ? fx.status.toUpperCase() : '')), home: d.home || (fx ? fx.home : ''), away: d.away || (fx ? fx.away : '') };
@@ -76,7 +75,7 @@ export default async function handler(req, res) {
     return !(haveFinal && isFinal(g)) && !pageAfterFixture;
   }).map(g => ({ id: 'game-' + g.id, url: g.url }));
 
-  await put('latest.json', JSON.stringify(out), { access: 'public', addRandomSuffix: false, contentType: 'application/json', cacheControlMaxAge: 30 });
+  await putText('latest.json', JSON.stringify(out), 'application/json');
   const played = Object.values(out.games).length;
   res.setHeader('cache-control', 'no-store');
   res.status(200).json({ ok: true, more, count: more.length, message: `${out.fixture.length} fixtures, ${played} game pages, ${more.length} still to fetch`, warnings: out.meta.warnings });
