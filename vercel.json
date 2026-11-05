@@ -4,8 +4,10 @@
   "headers": [
     { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
     { "source": "/config.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-    { "source": "/assets/generated/(.*)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    { "source": "/assets/generated/(.*)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+    { "source": "/manifest.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+    { "source": "/apple-touch-icon.png", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
   ],
-  "buildCommand": "node scripts/patch-ui.mjs && node scripts/mobile-ui.mjs && node scripts/cache-logos.mjs && node scripts/unify-app.mjs && node scripts/game-day-ui.mjs",
+  "buildCommand": "node scripts/patch-ui.mjs && node scripts/mobile-ui.mjs && node scripts/cache-logos.mjs && node scripts/unify-app.mjs && node scripts/game-day-ui.mjs && node scripts/home-screen.mjs",
   "outputDirectory": "."
 }
