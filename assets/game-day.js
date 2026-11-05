@@ -14,7 +14,7 @@ export const FAMILY_DUTIES = Object.freeze([
 
 export function dutyForGame(game,ourTeam=DUTY_TEAM){
   if(!game||ourTeam!==DUTY_TEAM||![game.home,game.away].includes(ourTeam))return null;
-  const specific=FAMILY_DUTIES.find(d=>d.gameId===game.id);
+  const specific=FAMILY_DUTIES.find(d=>d.gameId&&d.gameId===game.id);
   if(specific)return specific;
   // The saved team-guide fixtures have different IDs; allow their exact round and opponent.
   const opponent=game.home===ourTeam?game.away:game.home;
