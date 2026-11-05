@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Tigers 14.8 Playbook</title>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Melbourne Tigers 14.8 playbook. Pick your position, watch the plays run, and test where you should be.">
+<meta name="theme-color" content="#050708">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="14.8 Playbook">
+<meta name="application-name" content="14.8 Playbook">
+<style>:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); } img { max-width: 100%; } [hidden] { display: none !important; }</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+
+:root {
+--ink: #050708; --ink-fg: #f6f6f4;
+--gold: #ffcb08; --gold-deep: #b98f00; --red: #ec1f28;
+--bg: #ededea; --surface: #ffffff; --fg: #121316; --muted: #5f6269; --line: #d6d7d3;
+--court: #d8ab72; --court-key: #cf9d5e; --court-line: #fbf7ef;
+--good: #1f7a3a; --good-soft: #e0f3e6; --bad: #b4262c; --bad-soft: #fbe4e5;
+--display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+--body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+--bg: #0f1012; --surface: #1a1b1e; --fg: #f1f1ee; --muted: #a5a7ad; --line: #30323a;
+--court: #5b3d24; --court-key: #4d321c; --court-line: #e9e2d2;
+--good: #58c27a; --good-soft: #15301f; --bad: #ff6b70; --bad-soft: #3a1618;
+color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+--bg: #0f1012; --surface: #1a1b1e; --fg: #f1f1ee; --muted: #a5a7ad; --line: #30323a;
+--court: #5b3d24; --court-key: #4d321c; --court-line: #e9e2d2;
+--good: #58c27a; --good-soft: #15301f; --bad: #ff6b70; --bad-soft: #3a1618;
+color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: #ffffff; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+.logo-strip { background: #ffffff; }
+.logo-strip-inner { max-width: 1040px; margin: 0 auto; padding-block: 10px 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.logo-strip img { display: block; height: 54px; width: auto; max-width: 100%; }
+.band { background: var(--ink); color: var(--ink-fg); }
+.band-inner { max-width: 1040px; margin: 0 auto; padding-block: 14px 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.eyebrow { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: var(--gold); }
+.band h1 { font-size: 34px; line-height: 1; font-weight: 800; letter-spacing: .01em; }
+@media (max-width: 480px) { .band-note { display: none; } }
+.band-note { font-size: 12px; color: #c8c8c4; text-align: right; max-width: 220px; }
+.tabs { background: var(--ink); border-top: 1px solid #2a2b2e; }
+.tabs-inner { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-wrap: wrap; gap: 0 4px; }
+.tab { background: none; border: 0; color: #c8c8c4; font-family: var(--display); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: .06em; padding: 12px 14px 10px; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--gold); border-bottom-color: var(--gold); }
+@media (max-width: 480px) { .tab { font-size: 15px; padding: 10px 10px 8px; } }
+.posrow[data-collapsed="1"] .chip:not([aria-pressed="true"]) { display: none; }
+.chip.change { display: none; border-style: dashed; color: var(--muted); padding: 8px 14px; }
+.posrow[data-collapsed="1"] .chip.change { display: flex; }
+.mirrornote { font-size: 12px; font-weight: 600; color: var(--red); }
+.stage.fs { position: fixed; inset: 0; z-index: 50; background: var(--court); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.stage.fs svg.court { height: 100%; width: 100%; min-height: 0; border-radius: 0; }
+.fsbar { display: none; align-items: center; justify-content: space-between; gap: 10px; padding: 8px max(16px, env(safe-area-inset-left, 0px)); background: var(--ink); color: var(--ink-fg); }
+.stage.fs .fsbar { display: flex; }
+.fsbar .cue { color: var(--gold); font-size: 20px; min-width: 0; }
+.fsbar .title { font-family: var(--display); font-weight: 700; font-size: 16px; color: #c8c8c4; text-transform: uppercase; letter-spacing: .06em; }
+.fsbar button { border: 2px solid var(--gold); background: transparent; color: var(--gold); border-radius: 8px; padding: 8px 14px; font-family: var(--display); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.fsbar button.solid { background: var(--gold); color: var(--ink); }
+.stage.fs .bigplay { bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+main { max-width: 1040px; margin: 0 auto; padding-block: 16px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 16px; }
+.playhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.playhead h2 { font-size: 28px; font-weight: 800; }
+.playhead p { margin: 0; color: var(--muted); font-size: 14px; max-width: 60ch; }
+.posrow { display: grid; gap: 8px; }
+.posrow .lbl { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 2px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 8px 14px 8px 8px; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.chip .num.x { font-size: 13px; }
+.chip .num { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 17px; display: grid; place-items: center; }
+.chip[aria-pressed="true"] { border-color: var(--red); background: var(--red); color: #fff; }
+.chip[aria-pressed="true"] .num { background: #fff; color: var(--red); }
+.chip.all .num { background: var(--ink); color: var(--gold); font-size: 13px; }
+.chip.all[aria-pressed="true"] .num { background: #fff; color: var(--ink); }
+.work { display: grid; grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr); gap: 16px; align-items: start; }
+@media (max-width: 760px) { .work { grid-template-columns: 1fr; } }
+.courtwrap { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px; display: grid; gap: 10px; }
+.courtbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.stepdots { display: flex; gap: 6px; align-items: center; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); border: 0; padding: 0; }
+.dot[aria-current="step"] { background: var(--red); transform: scale(1.3); }
+.dot.done { background: var(--gold-deep); }
+.toggles { display: flex; flex-wrap: wrap; gap: 6px; }
+.tog { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 6px; padding: 5px 9px; font-size: 12px; font-weight: 600; }
+.tog[aria-pressed="true"] { color: var(--fg); border-color: var(--fg); }
+.stage { position: relative; }
+.bigplay { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); border: 0; background: var(--ink); color: var(--gold); border-radius: 999px; padding: 12px 22px 12px 16px; display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: .04em; text-transform: uppercase; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.bigplay svg { width: 22px; height: 22px; fill: var(--gold); }
+.bigplay:hover { transform: translateX(-50%) scale(1.04); }
+.transport { display: grid; grid-template-columns: auto auto 1fr auto auto; gap: 8px; align-items: center; }
+@media (max-width: 480px) { .transport { gap: 6px; } .tbtn { width: 38px; height: 38px; } .spd, .lp { padding: 7px 6px; font-size: 12px; } }
+.tbtn { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: var(--ink); color: var(--gold); display: grid; place-items: center; padding: 0; }
+.tbtn svg { width: 18px; height: 18px; fill: currentColor; }
+.tbtn.alt { background: var(--surface); color: var(--fg); border-color: var(--line); }
+input[type=range].scrub { width: 100%; min-width: 0; accent-color: var(--red); margin: 0; }
+.spd { border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 6px; padding: 8px 6px; font: 600 13px var(--body); }
+.lp { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 6px; padding: 8px 10px; font-size: 13px; font-weight: 600; }
+.lp[aria-pressed="true"] { color: var(--fg); border-color: var(--fg); }
+svg.court { width: 100%; height: auto; display: block; border-radius: 8px; background: var(--court); touch-action: manipulation; }
+svg.court.quiz-live { cursor: crosshair; }
+.court-line { stroke: var(--court-line); stroke-width: 1.2; fill: none; }
+.key { fill: var(--court-key); }
+.spot { font: 600 4.6px var(--body); fill: var(--court-line); opacity: .75; text-anchor: middle; letter-spacing: .04em; }
+.p circle { fill: var(--gold); stroke: var(--ink); stroke-width: 1.2; }
+.p text { font: 800 9px var(--display); fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.p.dim { opacity: .55; }
+.p.opp circle { fill: var(--court-line); stroke: var(--ink); stroke-width: 1; }
+.p.opp text { fill: var(--ink); font-weight: 700; }
+.p.x text { font-size: 7.5px; }
+.path.opp { opacity: .5; }
+.p.me circle { fill: var(--red); stroke: #fff; stroke-width: 1.6; }
+.p.me text { fill: #fff; }
+.p.me .ring { fill: none; stroke: var(--gold); stroke-width: 1.6; stroke-dasharray: 3 2; }
+.d text { font: 700 8px var(--body); fill: #262626; text-anchor: middle; dominant-baseline: central; opacity: .8; }
+.d { transition: opacity .3s; }
+.path { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.path.me { stroke: var(--red); stroke-width: 1.9; }
+.path.pass { stroke-dasharray: 3 2.5; }
+.path.faint { opacity: .45; }
+.bar { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.bar.me { stroke: var(--red); }
+.ball { fill: #e4651f; stroke: #5a230a; stroke-width: .6; }
+.target { fill: none; stroke: var(--good); stroke-width: 1.6; stroke-dasharray: 2.5 2; }
+.tap { fill: none; stroke: #fff; stroke-width: 1.6; }
+.tap.ok { stroke: var(--good); } .tap.no { stroke: var(--bad); }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: 12px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; width: 22px; height: 0; border-top: 2px solid var(--fg); }
+.legend i.dash { border-top-style: dashed; }
+.legend i.wavy { border: 0; height: 8px; background: repeating-linear-gradient(90deg, var(--fg) 0 2px, transparent 2px 4px); }
+.legend i.scr { width: 14px; border-top: 2px solid var(--fg); position: relative; }
+.legend i.scr::after { content: ""; position: absolute; right: -1px; top: -5px; height: 9px; border-left: 2px solid var(--fg); }
+.panel { display: grid; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; }
+.stepno { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--muted); }
+.card h3 { font-size: 24px; font-weight: 800; line-height: 1.05; }
+.cue { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--red); letter-spacing: .02em; }
+.job { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; padding: 8px 0; border-top: 1px solid var(--line); }
+.job:first-of-type { border-top: 0; }
+.job .n.x { font-size: 12px; }
+.job .n { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 15px; display: grid; place-items: center; margin-top: 1px; }
+.job.me .n { background: var(--red); color: #fff; }
+.job p { margin: 0; }
+.job .who { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.yourjob { background: var(--bad-soft); border-color: transparent; }
+.yourjob .lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); }
+.yourjob p { margin: 0; font-size: 17px; font-weight: 500; line-height: 1.4; }
+.yourjob .why { font-size: 14px; color: var(--muted); font-weight: 400; }
+.ctl { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 2px solid var(--ink); background: var(--ink); color: var(--ink-fg); border-radius: 8px; padding: 10px 16px; font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; flex: 1; min-width: 90px; }
+.btn.alt { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn.gold { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.btn:disabled { opacity: .4; cursor: default; }
+.mode { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--line); padding: 3px; border-radius: 10px; }
+.mode button { border: 0; background: transparent; color: var(--muted); border-radius: 8px; padding: 8px; font-weight: 700; font-size: 14px; }
+.mode button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.quizmsg { border-radius: 10px; padding: 12px 14px; font-weight: 600; font-size: 16px; }
+.quizmsg.ask { background: var(--gold); color: var(--ink); }
+.quizmsg.ok { background: var(--good-soft); color: var(--good); }
+.quizmsg.no { background: var(--bad-soft); color: var(--bad); }
+.quizmsg small { display: block; font-weight: 400; margin-top: 4px; font-size: 14px; }
+.score { font-family: var(--display); font-size: 36px; font-weight: 800; line-height: 1; }
+.score small { font-size: 14px; font-family: var(--body); font-weight: 600; color: var(--muted); display: block; }
+.diagram { display: grid; gap: 6px; }
+.diagram img { width: 100%; max-width: 320px; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+.diagram .note { margin: 0; font-size: 14px; color: var(--fg); max-width: 60ch; line-height: 1.5; }
+.diagram summary { cursor: pointer; font-weight: 600; color: var(--muted); font-size: 13px; }
+.terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px 20px; }
+.terms div { padding: 8px 0; border-top: 1px solid var(--line); }
+.terms b { font-family: var(--display); font-size: 17px; font-weight: 700; display: block; }
+.terms span { color: var(--muted); font-size: 14px; }
+.foot { font-size: 12px; color: var(--muted); }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+@media (prefers-reduced-motion: reduce) { .dot, .d { transition: none; } }
+@media (max-width: 760px) {
+.courtwrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; padding: 8px; gap: 8px; }
+.legend { display: none; }
+.tog { padding: 4px 7px; font-size: 11px; }
+}
+</style>
+<div class="logo-strip">
+<div class="logo-strip-inner"><img src="img/logo.png" alt="Melbourne Tigers" width="560" height="267"></div>
+</div>
+<header class="band">
+<div class="band-inner">
+<div>
+<div class="eyebrow"><a href="/" style="color:inherit;text-decoration:none">&larr; Tigers 14.8 tournament app</a></div>
+<h1>14.8 Playbook</h1>
+</div>
+<div class="band-note">Pick your number, step through the set, then test yourself.</div>
+</div>
+</header>
+<nav class="tabs" aria-label="Plays">
+<div class="tabs-inner" id="playTabs" role="tablist"></div>
+</nav>
+<main>
+<div class="playhead">
+<h2 id="playName"></h2>
+<p id="playWhen"></p>
+</div>
+<div class="posrow" id="posrow">
+<div class="lbl">I am playing</div>
+<div class="chips" id="chips"></div>
+</div>
+<div class="work">
+<div class="courtwrap">
+<div class="courtbar">
+<div class="stepdots" id="dots" aria-label="Steps"></div>
+<div class="toggles">
+<button class="tog" id="togDef" aria-pressed="false">Defence</button>
+<button class="tog" id="togSpots" aria-pressed="false">Spot names</button>
+<button class="tog" id="togPaths" aria-pressed="true">Arrows</button>
+<button class="tog" id="togMirror" aria-pressed="false">Mirror</button>
+<button class="tog" id="togVoice" aria-pressed="false">Voice</button>
+<button class="tog" id="togFs" aria-pressed="false">Full screen</button>
+</div>
+</div>
+<div class="stage" id="stage">
+<div class="fsbar"><div style="min-width:0"><div class="title" id="fsTitle"></div><div class="cue" id="fsCue"></div></div><div style="display:flex;gap:8px"><button id="fsPrev">Back</button><button id="fsNext" class="solid">Next</button><button id="fsPlay" class="solid">Run</button><button id="fsExit">Exit</button></div></div>
+<svg class="court" id="court" viewBox="-18 -6 186 152" role="img" aria-label="Half court showing player positions for the current step">
+
+<rect x="0" y="0" width="150" height="140" fill="none" />
+<rect class="key" x="50.5" y="0" width="49" height="58" />
+<path class="court-line" d="M0 0 H150 V140" />
+<path class="court-line" d="M0 0 V140" />
+<rect class="court-line" x="50.5" y="0" width="49" height="58" />
+<circle class="court-line" cx="75" cy="58" r="18" />
+<path class="court-line" d="M9 0 V29.9 A67.5 67.5 0 0 0 141 29.9 V0" />
+<path class="court-line" d="M62.5 15.75 A12.5 12.5 0 0 0 87.5 15.75" />
+<line class="court-line" x1="66" y1="12" x2="84" y2="12" style="stroke-width:1.8" />
+<circle class="court-line" cx="75" cy="15.75" r="2.25" />
+<g id="spots" hidden>
+<text class="spot" x="12" y="11">LEFT CORNER</text><text class="spot" x="138" y="11">RIGHT CORNER</text>
+<text class="spot" x="40" y="22">BLOCK</text><text class="spot" x="110" y="22">BLOCK</text>
+<text class="spot" x="42" y="65">ELBOW</text><text class="spot" x="108" y="65">ELBOW</text>
+<text class="spot" x="75" y="64">NAIL</text>
+<text class="spot" x="18" y="72">LEFT WING</text><text class="spot" x="132" y="72">RIGHT WING</text>
+<text class="spot" x="75" y="100">TOP</text>
+<text class="spot" x="40" y="104">SLOT</text><text class="spot" x="110" y="104">SLOT</text>
+</g>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke" /></marker>
+</defs>
+<g id="paths"></g>
+<g id="defence"></g>
+<g id="players"></g>
+<circle class="ball" id="ball" r="3" />
+<g id="quizLayer"></g>
+</svg>
+<button class="bigplay" id="bigPlay"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg><span>Run the play</span></button>
+<div class="fsbar" style="justify-content:center"><span class="mirrornote" id="fsMirror" hidden>Mirrored: read left as right</span></div>
+</div>
+<div class="transport">
+<button class="tbtn" id="ppBtn" aria-label="Play"><svg viewBox="0 0 24 24"><path id="ppIcon" d="M6 4l14 8-14 8z"/></svg></button>
+<button class="tbtn alt" id="replayBtn" aria-label="Replay from the start"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+<input type="range" class="scrub" id="scrub" min="0" max="1000" value="0" aria-label="Play position">
+<select class="spd" id="speed" aria-label="Speed"><option value="0.5">Slow</option><option value="1" selected>Normal</option><option value="1.6">Fast</option></select>
+<button class="lp" id="loopBtn" aria-pressed="false">Loop</button>
+</div>
+<div class="legend">
+<span><i></i> cut</span><span><i class="scr"></i> screen</span><span><i class="wavy"></i> dribble</span><span><i class="dash"></i> pass</span>
+</div>
+<div class="mirrornote" id="mirrorNote" hidden>Mirrored: the play is flipped, so read left as right in the text.</div>
+</div>
+<div class="panel">
+<div class="mode" role="group" aria-label="Mode">
+<button id="modeLearn" aria-pressed="true">Learn it</button>
+<button id="modeQuiz" aria-pressed="false">Test me</button>
+</div>
+<div class="card" id="stepCard">
+<div class="stepno" id="stepNo"></div>
+<h3 id="stepTitle"></h3>
+<div class="cue" id="stepCue"></div>
+<div id="quizBox" hidden></div>
+<div class="yourjob" id="yourJob" hidden>
+<div class="lbl" id="yjLbl">Your job</div>
+<p id="yjText"></p>
+<p class="why" id="yjWhy"></p>
+</div>
+<div id="jobs"></div>
+<div class="ctl">
+<button class="btn alt" id="prevBtn">Back</button>
+<button class="btn" id="nextBtn">Next</button>
+</div>
+<p class="hint" id="hint"></p>
+</div>
+<details class="card diagram" id="diagramBox">
+<summary>Coach's drawing for this step</summary>
+<img id="diagramImg" alt="Coach's hand drawing of this step" />
+<p class="note" id="diagramNote" hidden></p>
+</details>
+</div>
+</div>
+<div class="card">
+<h3 style="font-size:22px">Words we use</h3>
+<div class="terms" id="terms"></div>
+</div>
+<p class="foot">Court is a FIBA half court (15 m wide, key 4.9 m, three-point line 6.75 m). Baseline is at the top, the same way round as the drawings. Numbers are positions, not singlet numbers.</p>
+<p class="foot">&copy; 2026 John Kontonis. All rights reserved. Plays by the Melbourne Tigers 14.8 coaching staff.</p>
+</main>
+<script>
+
+const DIAGRAMS = { claw1: "img/claw1.png", sniper1: "img/sniper1.png", slob1: "img/slob1.png", slob2: "img/slob2.png", slob3: "img/slob3.png", slob4: "img/slob4.png", red1: "img/red1.png", red2: "img/red2.png", ice1: "img/ice1.png", ice2: "img/ice2.png", ice3: "img/ice3.png", hedge1: "img/hedge1.png", hedge2: "img/hedge2.png", hedge3: "img/hedge3.png" };
+const ROLES = { "1": "Point", "2": "Guard", "3": "Wing", "4": "Forward", "5": "Centre", "X1": "On the ball", "X2": "On 2, corner", "X3": "On 3, help side", "X4": "On 4, help side", "X5": "On the screener" };
+const OFFENCE = ["1", "2", "3", "4", "5"].map(id => ({ id, team: "us" }));
+const PLAYS = [
+{
+id: "slob", name: "SLOB Box", hash: "slob", actors: OFFENCE,
+when: "Sideline out of bounds in our front court. We line up in a box: 5 and 1 on the blocks, 2 and 3 at the elbows, 4 takes the ball out.",
+start: { 1: [98, 20], 2: [52, 54], 3: [98, 54], 4: [-7, 92], 5: [52, 20] },
+ball: 4,
+def: { 1: [88, 22], 2: [58, 44], 3: [92, 44], 4: [12, 86], 5: [62, 22] },
+steps: [
+{
+title: "Screen up out of the box", cue: "Slap. Screens up. Cutters go.",
+diagram: "slob1",
+moves: {
+5: { to: [56, 40], type: "screen" },
+1: { to: [94, 40], type: "screen" },
+2: { to: [8, 15], via: [50, 2], type: "cut" },
+3: { to: [91, 25], via: [114, 36], type: "cut" }
+},
+def: { 1: [86, 32], 2: [40, 40], 3: [104, 34], 4: [12, 86], 5: [64, 32] },
+jobs: {
+1: ["Step up off the block and screen 3's defender. Make contact and hold still until 3 has gone past.", "A moving screen is a foul. Plant your feet, then let 3 use you."],
+2: ["Wait for 5's screen, then curl tight off it toward the baseline and run to the left corner. Feet behind the line, hands ready.", "You are the corner shooter. If you leave early, the screen is wasted."],
+3: ["Set your defender up by taking a step out, then cut hard off 1's screen to the rim. Look for the pass from 4.", "First option of the whole play. Expect the ball."],
+4: ["Slap the ball to start the play. First look is 3 cutting to the rim.", "Count in your head. You have five seconds."],
+5: ["Step up off the block and screen 2's defender. Make contact and hold.", "Your screen sends 2 to the corner. Hold it long enough."]
+}
+},
+{
+title: "Pop and inbound", cue: "Screeners pop. Ball to 1.",
+diagram: "slob2",
+moves: {
+1: { to: [74, 96], via: [126, 74], type: "cut" },
+5: { to: [54, 40], type: "hold" }
+},
+pass: { from: 4, to: 1 },
+def: { 1: [86, 90], 2: [40, 20], 3: [82, 30], 4: [12, 86], 5: [64, 34] },
+jobs: {
+1: ["After your screen, pop out around the three-point line to the top of the key. Show 4 a target with both hands.", "This is the main pass. Get there in a straight line, no jogging."],
+2: ["Stay in the left corner. Feet set, ready to catch and shoot.", "Keep your defender with you. That opens the lane."],
+3: ["If the ball did not come to you at the rim, post up on the right block with your back to the basket.", "Hold your spot. You are the second target."],
+4: ["Pass to 1 at the top. If 3 is open at the rim first, hit 3.", "Pass away from the defender's hands."],
+5: ["Hold your spot on the left side of the key, face the ball and show your hands.", "You are the safety pass if 1 is covered."]
+}
+},
+{
+title: "Inbounder cuts in", cue: "4 cuts off 5. Flash to the line.",
+diagram: "slob3",
+moves: {
+5: { to: [38, 86], via: [36, 60], type: "screen", face: [22, 100] },
+4: { to: [118, 18], via: [32, 78], type: "cut" },
+3: { to: [133, 76], via: [118, 46], type: "cut" }
+},
+def: { 1: [84, 104], 2: [41, 41], 3: [118, 62], 4: [70, 50], 5: [66, 70] },
+jobs: {
+1: ["Hold the ball at the top. Watch 4 cut through the key: if 4 is open on the way through, hit 4.", "Be patient. Do not dribble yet."],
+2: ["Stay in the corner. Keep your defender busy by staying ready to shoot.", "Spacing is a job. Standing still here is the right move."],
+3: ["Clear out from the block to the right wing, outside the three-point line.", "You leave the baseline for 4 and take your defender away from the rim."],
+4: ["Step in from the sideline, run your defender into 5's screen and cut all the way through the key to the far side. Set up on the right baseline, midrange.", "Do not stop at the free-throw line. All the way across."],
+5: ["Move out to the left wing and screen 4's defender. Then hold; you screen again next step.", "Screen the defender, not the air. Face where 4 is coming from."]
+}
+},
+{
+title: "Pin-down and handoff", cue: "5 pins down for 2. 1 dribbles at 2.",
+diagram: "slob4",
+moves: {
+5: { to: [27, 32], via: [22, 60], type: "screen", face: [14, 18] },
+2: { to: [26, 78], via: [6, 50], type: "cut" },
+1: { to: [36, 90], type: "dribble" }
+},
+def: { 1: [50, 100], 2: [30, 24], 3: [120, 70], 4: [106, 28], 5: [50, 56] },
+jobs: {
+1: ["Dribble at 2 and hand the ball off as 2 comes off the screen. Hand it with two hands, body between the ball and the defender.", "Timing matters. Arrive as 2 arrives."],
+2: ["Come off 5's pin-down hard, straight up toward the ball, and take the handoff from 1.", "Shoulder brushes the screener. Do not drift wide."],
+3: ["Stay wide on the right wing. You are the skip-pass shooter.", "If your defender helps in the key, you are open."],
+4: ["Hold the right baseline, midrange, feet set. If your defender helps on 5's roll, you are open.", "Be a target, not a spectator."],
+5: ["Sprint down and pin-down screen 2's defender in the corner. Hold it, then roll to the basket.", "Screen first, roll second. Rolling early wastes the screen."]
+}
+},
+{
+title: "Attack", cue: "2 turns the corner. 5 rolls.",
+diagram: "slob4",
+moves: {
+2: { to: [60, 92], via: [44, 100], type: "dribble" },
+1: { to: [10, 56], via: [14, 76], type: "cut" },
+5: { to: [64, 24], type: "cut" }
+},
+handoffTo: 2,
+def: { 1: [20, 50], 2: [52, 84], 3: [120, 70], 4: [104, 30], 5: [58, 36] },
+jobs: {
+1: ["After the handoff, clear out to the left wing and get your feet set.", "You are now a shooter. Stay out of 2's way."],
+2: ["Turn the corner off the handoff and attack the middle with the dribble. Read in order: 5 rolling, 4 on the far baseline, 3 on the skip.", "Eyes up. The pass is there if you look."],
+3: ["Right wing, shooter's stance, ready for the skip pass.", "Catch, shot fake if needed, go."],
+4: ["Right baseline, midrange. Catch and shoot, or drive baseline.", "Short shot, your shot."],
+5: ["Roll to the rim with hands ready for the pocket pass or lob.", "Big target. Finish strong."]
+}
+}
+]
+},
+{
+id: "red", name: "RED (Chicago action)", hash: "red", actors: OFFENCE,
+when: "Our half-court set in open play. 1 brings the ball up on the left. Chicago action here is a dribble handoff first, then a ball screen from 5. The weak-side pin-down happens at the same time as the handoff.",
+start: { 1: [48, 106], 2: [8, 34], 3: [142, 20], 4: [106, 98], 5: [52, 66] },
+ball: 1,
+def: null,
+steps: [
+{
+title: "Handoff, and pin-down on the weak side", cue: "1 at 2. Hand it off. 4 pins down at the same time.",
+diagram: "red1",
+moves: {
+1: { to: [24, 80], type: "dribble" },
+2: { to: [14, 72], via: [4, 54], type: "cut" },
+4: { to: [128, 34], type: "screen", face: [140, 16] },
+3: { to: [116, 96], via: [146, 60], type: "cut" }
+},
+handoffTo: 2,
+jobs: {
+1: ["Dribble straight at 2 and hand the ball off with two hands as 2 comes up to meet you. Keep your body between the ball and 2's defender.", "The handoff comes first. Do not wait for 5."],
+2: ["Come up from the corner to meet 1 and take the handoff on the move, low and ready.", "Catch it running. Do not stop."],
+3: ["At the same moment as the handoff, come up off 4's pin-down to the right wing.", "Be at the wing when 2 has the ball. Early or late and the skip pass is not there."],
+4: ["At the same moment as the handoff, drop down and pin-down screen 3's defender. Hold it.", "Watch the ball: when 1 starts dribbling at 2, you go."],
+5: ["Hold at the elbow and wait. Your screen comes after the handoff, not before.", "Going early kills the play."]
+}
+},
+{
+title: "5 sets the ball screen", cue: "Handoff done. Now 5 screens the ball.",
+diagram: "red1",
+moves: {
+5: { to: [26, 64], type: "screen", face: [20, 56] },
+1: { to: [6, 24], via: [8, 56], type: "cut" },
+4: { to: [138, 20], type: "cut" }
+},
+jobs: {
+1: ["After the handoff, clear out to the left corner and get your feet set.", "You are the kick-out shooter if 2's defender helps."],
+2: ["Keep your dribble alive and wait for 5's screen. Set your defender up with a step toward the baseline.", "Patience here. Let 5 arrive and get set."],
+3: ["Right wing, feet set, ready to shoot.", "Shooter's spot. Be ready early."],
+4: ["Fill the right corner after your screen, feet behind the line.", "Deep corner. Give 2 the whole lane."],
+5: ["Now sprint to 2 and set the ball screen on 2's defender. Feet set, arms in.", "Screen after the handoff, never before."]
+}
+},
+{
+title: "Attack the middle", cue: "2 off the screen. 5 rolls.",
+diagram: "red2",
+moves: {
+2: { to: [72, 64], via: [28, 92], type: "dribble" },
+5: { to: [66, 28], type: "cut" }
+},
+jobs: {
+1: ["Left corner, feet set, ready to shoot.", "If your defender leaves you to help, you are open."],
+2: ["Come off 5's screen tight, shoulder to hip, and attack the middle toward the free-throw line. Read in order: 5 rolling, 1 in the corner, 3 and 4 on the right.", "Attack with the dribble, then pass or finish. No dancing."],
+3: ["Right wing, ready to shoot or drive on the catch.", "If the ball comes, be in your shot before it arrives."],
+4: ["Right corner, feet behind the line, ready to shoot.", "Stay spaced. Do not creep in."],
+5: ["Roll to the rim as soon as 2 comes off your screen. Hands up for the pocket pass or lob.", "Big target, strong finish."]
+}
+}
+]
+},
+{
+id: "ice", name: "ICE (Denial)", hash: "ice", side: "defence",
+actors: [{ id: "1", team: "opp" }, { id: "2", team: "opp" }, { id: "3", team: "opp" }, { id: "4", team: "opp" }, { id: "5", team: "opp" }, { id: "X1", team: "us" }, { id: "X2", team: "us" }, { id: "X3", team: "us" }, { id: "X4", team: "us" }, { id: "X5", team: "us" }],
+when: "Our defence against a side pick-and-roll, five on five. Gold is us. X1 steps between the ball and the screen and forces 1 baseline, X5 steps up to stop the straight drive, X3 helps on the roller, X4 covers 3 and 4 against the skip pass.",
+start: { "1": [32, 101], "X1": [41, 86], "2": [15, 26], "X2": [39, 28], "3": [134, 29], "X3": [107, 36], "4": [118, 82], "X4": [98, 57], "5": [58, 46], "X5": [68, 36] },
+startNotes: { "X1": "Start on the ball, arm's length from 1, between 1 and the basket.", "X2": "Start in the gap on 2 in the ball-side corner, seeing the ball.", "X3": "Start in the gap on 3, one step toward the paint, seeing the ball.", "X4": "Start in the gap on 4 on the weak side, seeing the ball.", "X5": "Start on 5 near the block, one step toward the ball." },
+ball: "1",
+def: null,
+steps: [
+{
+title: "Screen coming: ICE", cue: "ICE! X1 steps up, back on the screen. X5 steps up.",
+diagram: "ice1",
+note: "When the offence 5 sets the screen for the ball handler, the on-ball defender steps up and places himself between the ball handler and the screen, with his back against the screen. Deny the ball going toward the middle and force the drive toward the baseline. The defensive 5 steps up to where the on-ball defender opened up, stopping the offence driving straight toward the rim.",
+moves: {
+"5": { to: [55, 94], type: "screen", face: [44, 97] },
+"X1": { to: [44, 100], type: "cut" },
+"X5": { to: [48, 51], type: "cut" }
+},
+jobs: {
+"X1": ["As 5 arrives, step up and put yourself between 1 and the screen with your back against the screen. Deny the middle and force 1 to drive baseline.", "If 1 gets to the middle the coverage is beaten."],
+"X2": ["Stay in the gap on 2 in the corner, ball side. See the ball.", "Nothing to do yet except see everything."],
+"X3": ["Stay in the gap on 3, one step toward the paint. See the ball and 5.", "Your help comes next."],
+"X4": ["Stay in the gap on 4. See the ball.", "You will cover two players shortly."],
+"X5": ["Step up to the spot X1 opened up, between the ball and the rim, so 1 cannot drive straight to the basket.", "You are the wall on the baseline drive."]
+}
+},
+{
+title: "Baseline drive: help and roll", cue: "1 drives baseline. X1 pressures. X3 into the paint.",
+diagram: "ice2",
+note: "As the offence drives in, X3 steps into the paint to help, because 5 now has a clear path to roll in. X1 keeps applying pressure to the ball and X5 is ready to trap with X1.",
+moves: {
+"1": { to: [37, 64], type: "dribble" },
+"X1": { to: [43, 76], type: "cut" },
+"5": { to: [65, 62], via: [56, 76], type: "cut" },
+"X3": { to: [75, 47], type: "cut" },
+"X5": { to: [47, 53], type: "cut" }
+},
+jobs: {
+"X1": ["Keep pressure on the ball as 1 drives baseline. Stay on the top side so the middle stays shut.", "Chase hard, hands out of it."],
+"X2": ["Stay with 2 in the corner, ball side. 1 can still pass there.", "Do not get pulled toward the ball."],
+"X3": ["Step into the paint to help: 5 now has a clear lane to roll, so you take 5.", "Leave 3 for the moment; the roll is the bigger danger."],
+"X4": ["Hold your gap and see ball, 3 and 4. You are about to cover two.", "Stay calm, read the next pass."],
+"X5": ["Hold your spot in front of the drive and get ready to trap with X1.", "Two feet set, chest to the ball."]
+}
+},
+{
+title: "Trap and rotate", cue: "X1 and X5 trap. X3 on 5. X4 between 3 and 4.",
+diagram: "ice3",
+note: "Since X3 stepped in to help in the paint there may be a skip pass, so X4 has to be between 3 and 4, ready for a cut or to intercept the skip pass.",
+moves: {
+"X1": { to: [46, 73], type: "cut" },
+"X5": { to: [47, 55], type: "cut" },
+"X3": { to: [69, 52], type: "cut" },
+"X4": { to: [108, 47], type: "cut" },
+"5": { to: [64, 63], type: "hold" }
+},
+jobs: {
+"X1": ["Trap 1 with X5. Hands high, feet active, no fouling. Make 1 pick the ball up.", "A trap works because of feet, not arms."],
+"X2": ["Stay home on 2. The corner pass is still there.", "Hold the corner."],
+"X3": ["You are on 5 in the paint. Get in front of 5, arm bar, see the ball.", "No pocket pass, no layup."],
+"X4": ["Move to the spot between 3 and 4. Be ready for a cut or to intercept the skip pass.", "Two players, one defender: stay in the middle of them."],
+"X5": ["Trap 1 with X1 and wall off the baseline side.", "Nothing gets past you along the baseline."]
+}
+}
+]
+},
+{
+id: "hedge", name: "Hedge", hash: "hedge", side: "defence",
+actors: [{ id: "1", team: "opp" }, { id: "2", team: "opp" }, { id: "3", team: "opp" }, { id: "4", team: "opp" }, { id: "5", team: "opp" }, { id: "X1", team: "us" }, { id: "X2", team: "us" }, { id: "X3", team: "us" }, { id: "X4", team: "us" }, { id: "X5", team: "us" }],
+when: "Our other pick-and-roll coverage, five on five. Gold is us. We let 1 use the screen, X5 steps up to the level, then X1 and X5 trap 1 hard while X3 takes the roller and X2 and X4 step into the passing lanes.",
+start: { "1": [35, 102], "X1": [40, 84], "2": [16, 32], "X2": [36, 31], "3": [133, 23], "X3": [104, 28], "4": [114, 84], "X4": [98, 57], "5": [54, 33], "X5": [67, 28] },
+startNotes: { "X1": "Start on the ball, arm's length from 1, between 1 and the basket.", "X2": "Start in the gap on 2 in the ball-side corner, seeing the ball.", "X3": "Start in the gap on 3, seeing the ball and 5.", "X4": "Start in the gap on 4 on the weak side, seeing the ball.", "X5": "Start on 5 at the block, between 5 and the basket." },
+ball: "1",
+def: null,
+steps: [
+{
+title: "Let 1 use the screen, X5 to the level", cue: "Screen! X5 steps up to the level.",
+diagram: "hedge1",
+note: "We will allow 1 to use the screen, but we need X5 to step up to the screen level.",
+moves: {
+"5": { to: [52, 86], type: "screen", face: [42, 85] },
+"X5": { to: [63, 73], type: "cut" }
+},
+jobs: {
+"X1": ["Call the screen. Stay attached to 1 and let 1 use it; you will chase over the top.", "Do not jump the screen early; the trap needs 1 to come to it."],
+"X2": ["Gap on 2, ball side. See the ball.", "Ready to step up next."],
+"X3": ["Gap on 3. See the ball and 5.", "Watch 5; the roll is yours."],
+"X4": ["Gap on 4. See the ball.", "Ready to step up next."],
+"X5": ["Step up to the level of the screen as 5 sets it. Be there before 1 arrives.", "Late to the level and there is no trap."]
+}
+},
+{
+title: "Trap the ball", cue: "X1 and X5 trap 1. X3 takes 5. X2 and X4 up the line.",
+diagram: "hedge2",
+note: "X1 and X5 perform an aggressive trap on 1. 5 will have an open lane to roll in, so X3 has to step in to help. X2 and X4 step up to intercept any easy pass to 2 and 4.",
+moves: {
+"1": { to: [63, 98], via: [46, 104], type: "dribble" },
+"X1": { to: [52, 92], type: "cut" },
+"X5": { to: [72, 89], type: "cut" },
+"5": { to: [68, 55], via: [58, 70], type: "cut" },
+"X3": { to: [76, 47], type: "cut" },
+"X2": { to: [31, 56], type: "cut" },
+"X4": { to: [92, 84], type: "cut" }
+},
+jobs: {
+"X1": ["Chase over the top and trap 1 with X5. Aggressive: hands high, chest to the ball, no reaching.", "Feet first, then hands."],
+"X2": ["Step up the line toward 1 to intercept any easy pass to 2.", "Read 1's eyes; the pass out is your steal."],
+"X3": ["5 has an open lane to roll. Step into the paint and take 5.", "The roll is the most dangerous pass. You own it."],
+"X4": ["Step up toward 1 to intercept the pass to 4.", "Be in the lane, not behind it."],
+"X5": ["Jump out and trap 1 with X1. Take away the dribble back toward the middle.", "Make it big and loud."]
+}
+},
+{
+title: "Hold the trap", cue: "Keep the trap on. Only a lob gets out.",
+diagram: "hedge3",
+note: "Hold the trap. 5 is covered by X3 in the paint, and X2 and X4 stay up in the passing lanes to 2 and 4.",
+moves: {
+"X1": { to: [56, 91], type: "cut" },
+"X5": { to: [70, 90], type: "cut" },
+"X3": { to: [74, 46], type: "cut" },
+"X4": { to: [94, 86], type: "cut" }
+},
+jobs: {
+"X1": ["Keep the trap on with X5. Make 1 pick the ball up and throw a high, slow pass.", "Do not reach. Patience wins the trap."],
+"X2": ["Stay up in the lane to 2. If the lob goes to 2, close out hard.", "The only pass out is a lob; be ready to run."],
+"X3": ["Stay on 5 in the paint, in front, seeing the ball.", "No easy roll pass."],
+"X4": ["Stay in the lane to 4. If the lob goes to 4, close out hard.", "Hands up, read the ball."],
+"X5": ["Keep the trap on with X1. Do not let 1 split you.", "Shoulder to shoulder with X1."]
+}
+}
+]
+},
+{
+id: "claw", name: "CLAW", hash: "claw", actors: OFFENCE,
+when: "Baseline out of bounds under our basket. Box set: 3 and 5 on the blocks, 2 and 4 at the elbows, 1 takes the ball out to the right of the basket. Screen the screener: 4 screens for 2, then 5 screens for 4.",
+start: { "1": [97, -5], "2": [50, 54], "3": [53, 19], "4": [94, 53], "5": [94, 19] },
+startNotes: { "1": "Take the ball out on the baseline, just to the right of the basket." },
+ball: "1",
+def: null,
+steps: [
+{
+title: "Set the screens", cue: "Slap. 3 clears. 4 across for 2. 5 into the lane.",
+diagram: "claw1",
+moves: {
+"3": { to: [8, 19], type: "cut" },
+"4": { to: [63, 50], type: "screen", face: [50, 54] },
+"5": { to: [76, 42], via: [86, 32], type: "screen", face: [62, 44] }
+},
+jobs: {
+"1": ["Slap the ball to start. Watch the screens form: 4 across the free-throw line, 5 into the middle of the lane.", "Count in your head. Five seconds."],
+"2": ["Hold at the left elbow until 4 arrives. Set your defender up with a step toward the basket.", "Leave early and the screen is wasted."],
+"3": ["Run the baseline out to the left corner, wide, feet behind the line.", "You clear the lane and you are the safety pass."],
+"4": ["Cut across the free-throw line and screen 2's defender at the left elbow. Plant and hold.", "A moving screen is a foul."],
+"5": ["Step off the block into the middle of the lane and set a screen facing the left elbow. You are about to screen for 4.", "Be set before 4 moves."]
+}
+},
+{
+title: "2 comes off, 4 dives", cue: "2 around to the right wing. 4 off 5 to the left block.",
+diagram: "claw1",
+moves: {
+"2": { to: [120, 27], via: [92, 82], type: "cut" },
+"4": { to: [66, 27], via: [64, 40], type: "cut" }
+},
+jobs: {
+"1": ["First look: 4 diving to the left block. If 4 is open, hit 4. Otherwise 2 is coming to the right wing.", "Fake with your eyes, not the ball."],
+"2": ["Run under 4's screen, loop below the free-throw line and out to the right wing. Hands ready.", "Tight off the screen, then sprint."],
+"3": ["Stay in the left corner. Be ready for the skip pass.", "Hold your spot."],
+"4": ["After your screen, cut off 5's screen and dive to the left block. Hands up for the lob.", "Screener becomes cutter. This is the surprise."],
+"5": ["Hold your screen until 4 has gone past you.", "Do not move early."]
+}
+},
+{
+title: "Inbound and roll", cue: "Ball to 2. 5 rolls to the right block. 1 steps in.",
+diagram: "claw1",
+moves: {
+"5": { to: [97, 35], via: [88, 46], type: "cut" },
+"1": { to: [110, 8], type: "cut" }
+},
+pass: { from: "1", to: "2" },
+jobs: {
+"1": ["Pass to 2 on the right wing, then step in along the baseline to the right corner.", "Pass away from the defender's hands."],
+"2": ["Catch on the wing and look inside: 5 rolling to the right block, 4 on the left block. Shoot if open.", "Catch ready to shoot."],
+"3": ["Left corner, feet set. Shooter on the skip.", "Hold your spot."],
+"4": ["Hold the left block, seal your defender, hands up.", "Big target."],
+"5": ["After 4 has used your screen, roll to the right block and seal for the pass from 2.", "Screen first, roll second."]
+}
+}
+]
+},
+{
+id: "sniper", name: "SNIPER", hash: "sniper",
+actors: [{ id: "1", team: "us" }, { id: "2", team: "us" }, { id: "5", team: "us" }],
+when: "Spain pick-and-roll, run three on three. 5 sets the ball screen at the top, 2 sprints up from the baseline and back-screens 5's defender, 5 rolls to the rim and 2 pops to the top.",
+start: { "1": [97, 93], "2": [79, 22], "5": [53, 53] },
+startNotes: { "1": "Start at the top with the ball, right of centre.", "2": "Start on the baseline in the lane, under the basket.", "5": "Start at the left elbow." },
+ball: "1",
+def: null,
+steps: [
+{
+title: "Spain: screen the ball, screen the screener", cue: "5 up to the ball. 2 up to the line.",
+diagram: "sniper1",
+moves: {
+"5": { to: [85, 76], via: [66, 72], type: "screen", face: [98, 84] },
+"2": { to: [76, 58], type: "screen", face: [84, 68] }
+},
+jobs: {
+"1": ["Wait at the top with your dribble alive. Let 5 arrive and get set, then go.", "Going early breaks the timing for everyone."],
+"2": ["Sprint up from the baseline and set a back screen on 5's defender at the free-throw line, just as 5 sets the ball screen. Feet set, arms in.", "You arrive as 5 arrives. That is the whole play."],
+"5": ["Sprint up and set the ball screen on 1's defender at the top. Flat and solid. Hold it.", "Your screen starts it; 2 is coming behind you."]
+}
+},
+{
+title: "1 drives, 5 rolls", cue: "1 off the screen. 5 rolls off 2's back screen.",
+diagram: "sniper1",
+moves: {
+"1": { to: [47, 46], via: [80, 92], type: "dribble" },
+"5": { to: [92, 27], via: [96, 55], type: "cut" }
+},
+jobs: {
+"1": ["Come off 5's screen tight and attack toward the left elbow. Eyes up the whole way.", "Attack with purpose or the defence sits back."],
+"2": ["Hold the back screen until 5 has rolled past you.", "Do not pop yet."],
+"5": ["Roll hard to the rim. 2's back screen puts your defender behind you. Hands up for the lob.", "This is the first option. Expect the ball."]
+}
+},
+{
+title: "2 pops, 1 reads", cue: "2 to the top. Read: lob, three, drive.",
+diagram: "sniper1",
+moves: {
+"2": { to: [82, 94], type: "cut" }
+},
+jobs: {
+"1": ["Read in order: 5 on the lob, 2 at the top for the three, then your own drive.", "Three options. Pick the open one."],
+"2": ["Pop out to the top behind the three-point line, feet set, hands ready. This is the sniper shot.", "Catch and shoot. No dribble."],
+"5": ["Finish the roll. If the lob is not there, seal under the rim.", "Big target, strong finish."]
+}
+}
+]
+}];
+const TERMS = [
+["SLOB", "Sideline out of bounds. The ball is passed in from the sideline."],
+["Box set", "Four players start in a square: two on the blocks, two at the elbows."],
+["Block", "The low post, either side of the key near the basket."],
+["Elbow", "Where the free-throw line meets the side of the key."],
+["Nail", "The middle of the free-throw line."],
+["Slot", "Above the three-point line, between the top and the wing."],
+["Screen", "Stand still and let a teammate run their defender into you. Feet set, arms in."],
+["Pin-down", "A screen set facing the baseline so a teammate can come up toward the ball."],
+["Screen up", "A screen set facing away from the baseline so a teammate can cut toward the basket."],
+["Curl", "Run tight around a screen, shoulder to shoulder with the screener."],
+["Pop", "After screening, step out away from the basket for a pass."],
+["Roll / dive", "After screening, turn and run to the basket for a pass."],
+["Flash", "A quick cut into an open space, usually the free-throw line."],
+["Dribble handoff (DHO)", "The ball handler dribbles at a teammate and hands the ball over."],
+["Chicago action", "Our version: a dribble handoff first, then a ball screen from 5, who rolls to the rim. The weak side pins down at the same time as the handoff."],
+["Ball screen", "A screen set on the defender of the player with the ball."],
+["Skip pass", "A pass across the court over the top of the defence to the far side."],
+["Spacing", "Staying wide so the defence cannot help. Standing still in the right spot is a job."],
+["BLOB", "Baseline out of bounds. The ball is passed in from under the basket."],
+["Back screen", "A screen set behind a defender, facing away from the basket, so the player can cut to the rim."],
+["Screen the screener", "A player sets a screen, then immediately runs off a screen set for him."],
+["Spain pick-and-roll", "A ball screen where a third player back-screens the screener's defender as the screener rolls, then pops out for a shot."],
+["ICE", "Pick-and-roll defence where the on-ball defender steps between the ball and the screen, back on the screen, denies the middle and forces the drive baseline. The screener's defender steps up to stop the straight drive."],
+["Hedge (our version)", "Pick-and-roll defence where the screener's defender steps up to the level of the screen and then traps the ball handler with the on-ball defender."],
+["Trap", "Two defenders on the ball handler at once, hands high, to force a pick-up and a bad pass."],
+["Gap", "Standing one step off your player toward the ball so you can see both and help."],
+["Over the top", "The on-ball defender chases the ball handler over the screen, between the screener and the ball, rather than going under."],
+["Tag the roller", "A help defender bumps or gets in front of the screener rolling to the basket so the pass is not there."],
+["The level", "The height on the court where the screen is set. Defenders drop to or come up to the level."]
+];
+
+function buildStates(play) {
+const states = [];
+let pos = {}; for (const k in play.start) pos[k] = play.start[k].slice();
+let ball = play.ball;
+let def = play.def ? JSON.parse(JSON.stringify(play.def)) : null;
+states.push({ pos: JSON.parse(JSON.stringify(pos)), ball, def });
+for (const st of play.steps) {
+for (const p in st.moves) pos[p] = st.moves[p].to.slice();
+if (st.pass) ball = st.pass.to;
+if (st.handoffTo) ball = st.handoffTo;
+if (st.def) def = JSON.parse(JSON.stringify(st.def));
+states.push({ pos: JSON.parse(JSON.stringify(pos)), ball, def });
+}
+return states;
+}
+PLAYS.forEach(p => p.states = buildStates(p));
+
+let play = PLAYS[0], step = 0, me = "", mode = "learn", showDef = false, showSpots = false, showPaths = true, mirror = false, voice = false, fs = false;
+const narrow = () => matchMedia("(max-width: 760px)").matches;
+const fx = x => mirror ? 150 - x : x;
+let anim = null, animT = 1, animFrom = null, animTo = null, running = false;
+let quiz = { asked: false, answered: false, correct: 0, total: 0, tap: null };
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+try {
+const saved = JSON.parse(localStorage.getItem("tigers-playbook") || "{}");
+if (saved.me) me = String(saved.me);
+if (saved.play) { const f = PLAYS.find(p => p.id === saved.play); if (f) play = f; }
+if (saved.voice) voice = true;
+} catch (e) {}
+const h = (location.hash || "").replace("#", "");
+if (h) { const f = PLAYS.find(p => p.hash === h); if (f) play = f; }
+function save() { try { localStorage.setItem("tigers-playbook", JSON.stringify({ me, play: play.id, voice })); } catch (e) {} }
+
+const bez = (a, c, b, t) => c
+? [(1 - t) * (1 - t) * a[0] + 2 * (1 - t) * t * c[0] + t * t * b[0], (1 - t) * (1 - t) * a[1] + 2 * (1 - t) * t * c[1] + t * t * b[1]]
+: [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+function trimmedPath(a, c, b, shrinkStart, shrinkEnd) {
+const pts = []; const N = 40;
+for (let i = 0; i <= N; i++) pts.push(bez(a, c, b, i / N));
+let s = 0, e = N;
+while (s < N && dist(pts[s], a) < shrinkStart) s++;
+while (e > s && dist(pts[e], b) < shrinkEnd) e--;
+return pts.slice(s, e + 1);
+}
+const poly = pts => pts.map((p, i) => (i ? "L" : "M") + fx(p[0]).toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+function zigzag(pts, amp) {
+const out = [];
+for (let i = 0; i < pts.length; i++) {
+const p = pts[i], q = pts[Math.min(i + 1, pts.length - 1)], r = pts[Math.max(i - 1, 0)];
+const dx = q[0] - r[0], dy = q[1] - r[1], L = Math.hypot(dx, dy) || 1;
+const s = (i % 2 ? 1 : -1) * (i === 0 || i === pts.length - 1 ? 0 : amp);
+out.push([p[0] + (-dy / L) * s, p[1] + (dx / L) * s]);
+}
+return out;
+}
+
+const $ = id => document.getElementById(id);
+const svgNS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent) { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function currentPositions() {
+const to = play.states[step];
+if (animT >= 1 || !animFrom) return to;
+const pos = {};
+const st = play.steps[step - 1];
+for (const p in to.pos) {
+const mv = st.moves[p];
+pos[p] = mv ? bez(animFrom.pos[p], mv.via, mv.to, ease(animT)) : to.pos[p];
+}
+let def = to.def;
+if (animFrom.def && to.def) {
+def = {};
+for (const d in to.def) def[d] = bez(animFrom.def[d], null, to.def[d], ease(animT));
+}
+return { pos, def, ball: to.ball };
+}
+function ballPoint(cur) {
+const to = play.states[step];
+const st = step ? play.steps[step - 1] : null;
+const holderEnd = cur.pos[to.ball];
+if (st && animT < 1 && animFrom) {
+if (st.pass) {
+const t = ease(animT); const fly = Math.max(0, (t - .45) / .55);
+const a = cur.pos[st.pass.from], b = cur.pos[st.pass.to];
+return [a[0] + (b[0] - a[0]) * fly, a[1] + (b[1] - a[1]) * fly];
+}
+if (st.handoffTo) {
+const t = ease(animT);
+return t < .85 ? cur.pos[animFrom.ball] : holderEnd;
+}
+}
+return holderEnd;
+}
+function draw() {
+const cur = currentPositions();
+const to = play.states[step];
+const g = $("players"); g.textContent = "";
+const order = play.actors.slice().sort((a, b) => (a.id === me) - (b.id === me));
+for (const a of order) {
+const p = a.id;
+const [x, y] = cur.pos[p];
+const cls = "p" + (a.team === "opp" ? " opp" : "") + (p.length > 1 ? " x" : "") + (me ? (p === me ? " me" : " dim") : "");
+const grp = el("g", { class: cls, transform: `translate(${fx(x).toFixed(2)} ${y.toFixed(2)})` }, g);
+if (p === me) el("circle", { class: "ring", r: 10.5 }, grp);
+el("circle", { r: 7 }, grp);
+const t = el("text", { y: 0.5 }, grp); t.textContent = p;
+}
+const d = $("defence"); d.textContent = "";
+if (showDef && cur.def) {
+for (const p in cur.def) {
+const [x, y] = cur.def[p];
+const grp = el("g", { class: "d", transform: `translate(${fx(x).toFixed(2)} ${y.toFixed(2)})` }, d);
+const t = el("text", {}, grp); t.textContent = "X" + p;
+}
+}
+const b = ballPoint(cur);
+const holderPos = cur.pos[to.ball];
+const off = (Math.abs(b[0] - holderPos[0]) < .01 && Math.abs(b[1] - holderPos[1]) < .01) ? [5.5, -5.5] : [0, 0];
+$("ball").setAttribute("cx", (fx(b[0]) + (mirror ? -off[0] : off[0])).toFixed(2)); $("ball").setAttribute("cy", (b[1] + off[1]).toFixed(2));
+}
+function drawPaths() {
+const g = $("paths"); g.textContent = "";
+const hideForQuiz = mode === "quiz" && quiz.asked && !quiz.answered;
+if (!showPaths || step === 0 || hideForQuiz) return;
+const st = play.steps[step - 1], from = play.states[step - 1], to = play.states[step];
+for (const p in st.moves) {
+const mv = st.moves[p]; if (mv.type === "hold") continue;
+const isMe = p === me; const isOpp = play.actors.some(a => a.id === p && a.team === "opp"); const cls = (isMe ? " me" : "") + (me && !isMe ? " faint" : "") + (isOpp ? " opp" : "");
+const a = from.pos[p];
+if (mv.type === "screen") {
+const pts = trimmedPath(a, mv.via, mv.to, 7.5, 7.5);
+if (pts.length > 1) el("path", { class: "path" + cls, d: poly(pts) }, g);
+const end = mv.to, prev = pts.length > 1 ? pts[pts.length - 2] : a;
+const face = mv.face || [end[0] + (end[0] - prev[0]), end[1] + (end[1] - prev[1])];
+const dx = face[0] - end[0], dy = face[1] - end[1], L = Math.hypot(dx, dy) || 1;
+const bx = end[0] + dx / L * 9, by = end[1] + dy / L * 9, nx = -dy / L * 5, ny = dx / L * 5;
+el("line", { class: "bar" + (isMe ? " me" : ""), x1: fx(bx - nx), y1: by - ny, x2: fx(bx + nx), y2: by + ny, opacity: me && !isMe ? .45 : 1 }, g);
+} else if (mv.type === "dribble") {
+const pts = zigzag(trimmedPath(a, mv.via, mv.to, 7.5, 9), 1.6);
+if (pts.length > 1) el("path", { class: "path" + cls, d: poly(pts), "marker-end": "url(#arr)" }, g);
+} else {
+const pts = trimmedPath(a, mv.via, mv.to, 7.5, 9);
+if (pts.length > 1) el("path", { class: "path" + cls, d: poly(pts), "marker-end": "url(#arr)" }, g);
+}
+}
+if (st.pass) {
+const a = from.pos[st.pass.from], b = to.pos[st.pass.to];
+const pts = trimmedPath(a, null, b, 8, 10);
+const isMe = me === String(st.pass.from) || me === String(st.pass.to);
+el("path", { class: "path pass" + (isMe ? " me" : "") + (me && !isMe ? " faint" : ""), d: poly(pts), "marker-end": "url(#arr)" }, g);
+}
+}
+
+const STEP_MS = 1500, HOLD_MS = 650, SEG = STEP_MS + HOLD_MS;
+let T = 0, speed = 1, loop = false, raf = null, lastNow = 0, stopAt = Infinity;
+const total = () => play.steps.length * SEG;
+const endOf = k => k === 0 ? 0 : k * SEG - HOLD_MS / 2;
+const startOf = k => (k - 1) * SEG;   // moment step k begins moving
+function setTime(newT, force) {
+T = Math.max(0, Math.min(total(), newT));
+const prevStep = step;
+if (T === 0) { step = 0; animFrom = null; animT = 1; }
+else {
+const k = Math.min(play.steps.length - 1, Math.floor(T / SEG));
+step = k + 1; animFrom = play.states[k];
+animT = Math.min(1, (T - k * SEG) / STEP_MS);
+if (reduce) animT = animT < 1 ? 0 : 1;
+}
+draw();
+if (step !== prevStep || force) { drawPaths(); renderPanel(); if (step !== prevStep && step > 0 && running && voice) say(play.steps[step - 1].cue); }
+$("scrub").value = Math.round(T / total() * 1000);
+}
+let voiceObj = null;
+function say(text) {
+try {
+if (!("speechSynthesis" in window)) return;
+speechSynthesis.cancel();
+const u = new SpeechSynthesisUtterance(text.replace(/X(\d)/g, "X $1"));
+const vs = speechSynthesis.getVoices(); const au = vs.find(v => /en[-_]AU/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)); if (au) u.voice = au;
+u.rate = 1.05; u.pitch = 1; speechSynthesis.speak(u);
+} catch (e) {}
+}
+function tick(now) {
+const dt = (now - lastNow) * speed; lastNow = now;
+let nT = T + dt;
+if (nT >= stopAt) { setTime(stopAt); stopRun(); renderPanel(); return; }
+if (nT >= total()) {
+if (loop) nT = 0; else { setTime(total()); stopRun(); renderPanel(); return; }
+}
+setTime(nT); raf = requestAnimationFrame(tick);
+}
+function startRun(target) {
+stopAt = target === undefined ? Infinity : target;
+if (stopAt === Infinity && T >= total()) setTime(0, true);
+running = true; lastNow = performance.now();
+if (raf) cancelAnimationFrame(raf);
+raf = requestAnimationFrame(tick); renderPanel();
+}
+function stopRun() { running = false; if (raf) cancelAnimationFrame(raf); raf = null; stopAt = Infinity; }
+function runStep(k) { // animate step k on its own
+stopRun(); setTime(startOf(k) + 1, true); startRun(endOf(k));
+}
+
+function renderPanel() {
+const n = play.steps.length;
+$("stepNo").textContent = step === 0 ? "Set-up" : `Step ${step} of ${n}`;
+const st = step ? play.steps[step - 1] : null;
+$("stepTitle").textContent = st ? st.title : "Starting spots";
+$("stepCue").textContent = st ? st.cue : (me ? `Find ${me} on the court. That is you.` : (play.side === "defence" ? "Pick your defender above, or watch everyone." : "Pick your number above, or watch everyone."));
+$("diagramImg").src = DIAGRAMS[st ? st.diagram : play.steps[0].diagram];
+const dn = $("diagramNote"); dn.hidden = !(st && st.note); dn.textContent = st && st.note ? st.note : "";
+const yj = $("yourJob"), jobs = $("jobs");
+jobs.textContent = "";
+const quizLive = mode === "quiz" && quiz.asked && !quiz.answered;
+if (st && me && !quizLive) {
+yj.hidden = false; $("yjText").textContent = st.jobs[me][0]; $("yjWhy").textContent = st.jobs[me][1];
+} else if (!st && me) {
+yj.hidden = false; $("yjText").textContent = startText(me); $("yjWhy").textContent = "";
+} else yj.hidden = true;
+if (!me && !quizLive) {
+for (const p of ours()) {
+const row = document.createElement("div"); row.className = "job";
+row.innerHTML = `<div class="n${p.length > 1 ? " x" : ""}">${p}</div><div><div class="who">${ROLES[p]}</div><p></p></div>`;
+row.querySelector("p").textContent = st ? st.jobs[p][0] : startText(p); jobs.appendChild(row);
+}
+}
+$("prevBtn").disabled = step === 0 || running || quizLive;
+$("nextBtn").disabled = (step === n && mode !== "quiz") || running || quizLive;
+$("nextBtn").textContent = step === n ? (mode === "quiz" ? "Test again" : "Done") : (mode === "quiz" && step < n ? (quiz.answered || step === 0 ? "Next question" : "Next") : "Next");
+$("hint").textContent = mode === "quiz" ? "" : (me ? "Red is you. Press play to watch the whole set, or step through with Next." : (play.side === "defence" ? "Gold is us, white is the offence. Pick your defender to see your job at each step." : "Pick a number to see one player's job at each step."));
+$("fsTitle").textContent = play.name + (step ? ` · Step ${step} of ${n}` : "");
+$("fsCue").textContent = st ? st.cue : "Set-up";
+$("fsPlay").textContent = running ? "Pause" : (step === n ? "Again" : "Run");
+$("fsPrev").disabled = step === 0 || running; $("fsNext").disabled = step === n || running;
+$("mirrorNote").hidden = !mirror; $("fsMirror").hidden = !mirror;
+const bp = $("bigPlay"); bp.hidden = running || mode === "quiz";
+bp.querySelector("span").textContent = T === 0 ? "Run the play" : T >= total() ? "Run again" : "Resume";
+$("ppIcon").setAttribute("d", running ? "M6 5h4v14H6zM14 5h4v14h-4z" : "M6 4l14 8-14 8z");
+$("ppBtn").setAttribute("aria-label", running ? "Pause" : "Play");
+$("ppBtn").disabled = mode === "quiz"; $("replayBtn").disabled = mode === "quiz"; $("scrub").disabled = mode === "quiz";
+const dots = $("dots"); dots.textContent = "";
+for (let i = 0; i <= n; i++) {
+const b = document.createElement("button"); b.className = "dot" + (i < step ? " done" : ""); b.setAttribute("aria-label", i ? `Step ${i}` : "Set-up");
+if (i === step) b.setAttribute("aria-current", "step");
+b.onclick = () => { if (mode === "quiz") return; stopRun(); setTime(endOf(i), true); };
+dots.appendChild(b);
+}
+renderQuizBox();
+}
+const ours = () => play.actors.filter(a => a.team === "us").map(a => a.id);
+function startText(p) {
+if (play.startNotes && play.startNotes[p]) return play.startNotes[p];
+const s = play.start[p];
+const spot = spotName(s);
+return play.id === "slob" && p === "4" ? "Take the ball out on the left sideline, level with the top of the key." : `Start at the ${spot}.`;
+}
+function spotName([x, y]) {
+const L = x < 75;
+if (y < 32 && (x < 20 || x > 130)) return L ? "left corner" : "right corner";
+if (y < 32) return L ? "left block" : "right block";
+if (y < 62 && x > 45 && x < 105) return L ? "left elbow" : "right elbow";
+if (y < 80) return L ? "left wing" : "right wing";
+if (x > 60 && x < 90) return "top of the key";
+return L ? "left slot" : "right slot";
+}
+
+function renderQuizBox() {
+const box = $("quizBox"); box.textContent = ""; box.hidden = mode !== "quiz";
+$("court").classList.toggle("quiz-live", mode === "quiz" && quiz.asked && !quiz.answered);
+if (mode !== "quiz") return;
+const n = play.steps.length;
+if (!me) { box.innerHTML = `<div class="quizmsg ask">Pick your number first, then I will ask where you go at each step.</div>`; return; }
+if (step === n && !quiz.asked) {
+box.innerHTML = `<div class="score">${quiz.correct} / ${quiz.total}<small>${quiz.correct === quiz.total ? "Every spot right. You know this one." : quiz.correct >= quiz.total - 1 ? "Nearly. Run it once more in Learn it, then test again." : "Go back to Learn it and watch your number, then try again."}</small></div>`;
+return;
+}
+if (quiz.asked && !quiz.answered) {
+const st = play.steps[step];
+box.innerHTML = `<div class="quizmsg ask">Step ${step + 1}: ${st.title}.<br>Where do you go? Tap the spot on the court.<small>If your job is to stay, tap where you already are.</small></div>`;
+return;
+}
+if (quiz.answered && step > 0) {
+const st = play.steps[step - 1];
+const ok = quiz.lastOk;
+box.innerHTML = `<div class="quizmsg ${ok ? "ok" : "no"}">${ok ? "Right spot." : "Not quite. The green ring is where you should be."}<small></small></div>`;
+box.querySelector("small").textContent = st.jobs[me][0];
+return;
+}
+box.innerHTML = `<div class="quizmsg ask">Ready? You are ${me}. Press Next question.</div>`;
+}
+function askQuestion() {
+if (step >= play.steps.length) return;
+quiz.asked = true; quiz.answered = false; quiz.tap = null;
+$("quizLayer").textContent = "";
+drawPaths(); renderPanel();
+}
+function courtPoint(evt) {
+const svg = $("court"); const pt = svg.createSVGPoint();
+pt.x = evt.clientX; pt.y = evt.clientY;
+return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+$("court").addEventListener("click", evt => {
+if (!(mode === "quiz" && quiz.asked && !quiz.answered && me)) return;
+const p = courtPoint(evt); const tap = [fx(p.x), p.y];
+const st = play.steps[step]; const mv = st.moves[me];
+const target = mv ? mv.to : play.states[step].pos[me];
+const tol = mv && mv.type !== "hold" ? 16 : 13;
+const ok = dist(tap, target) <= tol;
+quiz.answered = true; quiz.lastOk = ok; quiz.total++; if (ok) quiz.correct++;
+const layer = $("quizLayer"); layer.textContent = "";
+el("circle", { class: "tap " + (ok ? "ok" : "no"), cx: p.x, cy: p.y, r: 5 }, layer);
+if (!ok) el("circle", { class: "target", cx: fx(target[0]), cy: target[1], r: 11 }, layer);
+quiz.asked = false;
+runStep(step + 1);
+});
+
+$("prevBtn").onclick = () => { stopRun(); $("quizLayer").textContent = ""; quiz.answered = false; setTime(endOf(Math.max(0, step - 1)), true); };
+$("nextBtn").onclick = () => {
+stopRun();
+if (mode === "quiz") { if (!me) return; if (step === play.steps.length) { setMode("quiz"); return; } $("quizLayer").textContent = ""; quiz.answered = false; askQuestion(); return; }
+if (step < play.steps.length) runStep(step + 1);
+};
+$("bigPlay").onclick = () => startRun();
+$("ppBtn").onclick = () => { if (running) { stopRun(); renderPanel(); } else startRun(); };
+$("replayBtn").onclick = () => { stopRun(); setTime(0, true); startRun(); };
+$("scrub").addEventListener("input", e => { stopRun(); setTime(+e.target.value / 1000 * total(), true); });
+$("speed").onchange = e => { speed = +e.target.value; };
+$("loopBtn").onclick = () => { loop = !loop; $("loopBtn").setAttribute("aria-pressed", loop); };
+$("modeLearn").onclick = () => setMode("learn");
+$("modeQuiz").onclick = () => setMode("quiz");
+function setMode(m) {
+stopRun(); mode = m;
+$("modeLearn").setAttribute("aria-pressed", m === "learn"); $("modeQuiz").setAttribute("aria-pressed", m === "quiz");
+quiz = { asked: false, answered: false, correct: 0, total: 0, tap: null };
+$("quizLayer").textContent = "";
+setTime(0, true);
+}
+$("togDef").onclick = () => { showDef = !showDef; $("togDef").setAttribute("aria-pressed", showDef); draw(); };
+$("togSpots").onclick = () => { showSpots = !showSpots; $("togSpots").setAttribute("aria-pressed", showSpots); $("spots").hidden = !showSpots; };
+$("togPaths").onclick = () => { showPaths = !showPaths; $("togPaths").setAttribute("aria-pressed", showPaths); drawPaths(); };
+$("togMirror").onclick = () => { mirror = !mirror; $("togMirror").setAttribute("aria-pressed", mirror); $("quizLayer").textContent = ""; draw(); drawPaths(); renderPanel(); };
+$("togVoice").onclick = () => { voice = !voice; $("togVoice").setAttribute("aria-pressed", voice); save(); if (voice) say("Voice on"); };
+function setFs(on) { fs = on; $("stage").classList.toggle("fs", on); $("togFs").setAttribute("aria-pressed", on); document.body.style.overflow = on ? "hidden" : ""; renderPanel(); }
+$("togFs").onclick = () => setFs(!fs);
+$("fsExit").onclick = () => setFs(false);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && fs) setFs(false); });
+$("fsPlay").onclick = () => { if (running) { stopRun(); renderPanel(); } else startRun(); };
+$("fsPrev").onclick = () => $("prevBtn").onclick();
+$("fsNext").onclick = () => { if (mode !== "quiz" && step < play.steps.length) { stopRun(); runStep(step + 1); } };
+$("togVoice").setAttribute("aria-pressed", voice);
+if ("speechSynthesis" in window) speechSynthesis.getVoices();
+function renderTabs() {
+const t = $("playTabs"); t.textContent = "";
+for (const p of PLAYS) {
+const b = document.createElement("button"); b.className = "tab"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", p === play);
+b.textContent = p.name; b.onclick = () => selectPlay(p); t.appendChild(b);
+}
+}
+function selectPlay(p) {
+stopRun(); play = p;
+if (me && !ours().includes(me)) me = "";
+save(); renderTabs(); renderChips();
+$("playName").textContent = play.name; $("playWhen").textContent = play.when;
+$("togDef").hidden = !play.def;
+if (!play.def) { showDef = false; $("togDef").setAttribute("aria-pressed", "false"); }
+quiz = { asked: false, answered: false, correct: 0, total: 0, tap: null }; $("quizLayer").textContent = "";
+setTime(0, true);
+}
+function renderChips() {
+const c = $("chips"); c.textContent = "";
+const all = document.createElement("button"); all.className = "chip all"; all.setAttribute("aria-pressed", me === "");
+all.innerHTML = `<span class="num">ALL</span>Everyone`; all.onclick = () => setMe(""); c.appendChild(all);
+for (const p of ours()) {
+const b = document.createElement("button"); b.className = "chip"; b.setAttribute("aria-pressed", me === p);
+b.innerHTML = `<span class="num${p.length > 1 ? " x" : ""}">${p}</span>${ROLES[p]}`; b.onclick = () => setMe(p); c.appendChild(b);
+}
+const ch = document.createElement("button"); ch.className = "chip change"; ch.textContent = "Change"; ch.onclick = () => $("posrow").dataset.collapsed = "0"; c.appendChild(ch);
+$("posrow").dataset.collapsed = (me && narrow()) ? "1" : "0";
+}
+function setMe(p) { me = p; save(); renderChips(); quiz = { asked: false, answered: false, correct: 0, total: 0, tap: null }; $("quizLayer").textContent = ""; if (mode === "quiz") { stopRun(); setTime(0, true); } else { draw(); drawPaths(); renderPanel(); } }
+const termsEl = $("terms");
+for (const [w, d] of TERMS) { const div = document.createElement("div"); div.innerHTML = `<b></b><span></span>`; div.querySelector("b").textContent = w; div.querySelector("span").textContent = d; termsEl.appendChild(div); }
+renderChips(); selectPlay(play);
+</script>
+
+</body>
+</html>

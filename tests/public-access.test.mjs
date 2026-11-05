@@ -22,7 +22,7 @@ function response() {
 test('new visitors can view without a stored password', () => {
   const CONFIG = JSON.parse(fs.readFileSync('config.json', 'utf8'));
   assert.ok(!CONFIG.passcode);
-  const html = fs.readFileSync('index.html', 'utf8');
+  const html = fs.readFileSync('scout/index.html', 'utf8');
   const start = html.indexOf('function gate() {');
   const end = html.indexOf('(async () => {', start);
   assert.ok(start >= 0 && end > start);

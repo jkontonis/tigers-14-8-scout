@@ -4,7 +4,7 @@ import fs from 'node:fs';
 for(const file of ['api/ingest.js','api/finalize.js']) fs.writeFileSync(file, `export default function handler(req,res){res.status(410).json({error:'Use the authenticated scouting workflow publisher'});}`);
 const parserFile='lib/parse.js';let parser=fs.readFileSync(parserFile,'utf8');
 parser=parser.replaceAll('num(vals[j]) || 0','num(vals[j])').replaceAll('num(cells[2 + j]) || 0','num(cells[2 + j])').replaceAll('num(cells[j]) || 0','num(cells[j])');fs.writeFileSync(parserFile,parser);
-const file='index.html';let s=fs.readFileSync(file,'utf8');
+const file='scout/index.html';let s=fs.readFileSync(file,'utf8');
 if(!s.includes('scout-report-v2')){
  const change=(from,to)=>{if(!s.includes(from))throw new Error('UI integration anchor missing: '+from.slice(0,70));s=s.replace(from,to);};
  change('<script>\n(() => {','<script type="module">\nimport { buildReports } from "/lib/scouting.js"; // scout-report-v2\n(() => {');

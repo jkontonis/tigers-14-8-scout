@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tigers 14.8 Tournament</title>
+<meta name="description" content="Melbourne Tigers 14.8 at the Southern Peninsula tournament: schedule, game days, playbook, team, mindset and scouting, all in one place.">
+<meta name="theme-color" content="#050708">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Tigers 14.8">
+<link rel="manifest" href="/app/manifest.json">
+<link rel="icon" href="/img/fav.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --ink: #050708; --ink-2: #121418; --ink-fg: #f6f6f4; --ink-muted: #9a9ca3;
+  --gold: #ffcb08; --gold-deep: #b98f00; --red: #ec1f28;
+  --bg: #ededea; --surface: #ffffff; --fg: #121316; --muted: #5f6269; --line: #d6d7d3; --soft: #f5f5f2;
+  --good: #1f7a3a; --good-soft: #e0f3e6; --bad: #b4262c; --bad-soft: #fbe4e5;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1012; --surface: #1a1b1e; --fg: #f1f1ee; --muted: #a5a7ad; --line: #30323a; --soft: #222327;
+  --good: #58c27a; --good-soft: #15301f; --bad: #ff6b70; --bad-soft: #3a1618;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0f1012; --surface: #1a1b1e; --fg: #f1f1ee; --muted: #a5a7ad; --line: #30323a; --soft: #222327;
+  --good: #58c27a; --good-soft: #15301f; --bad: #ff6b70; --bad-soft: #3a1618;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.45; padding-bottom: calc(72px + env(safe-area-inset-bottom, 0)); }
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; }
+a { color: inherit; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.band { background: var(--ink); color: var(--ink-fg); padding: calc(10px + env(safe-area-inset-top, 0)) 16px 12px; }
+.band-row { display: flex; align-items: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+.band img { width: 44px; height: 44px; object-fit: contain; }
+.band h1 { font-size: 26px; font-weight: 800; line-height: 1; }
+.band .sub { font-size: 12px; color: var(--ink-muted); margin-top: 3px; }
+
+main { max-width: 760px; margin: 0 auto; padding: 16px 16px 30px; }
+section + section { margin-top: 28px; }
+.sec-h { border-bottom: 2px solid var(--fg); padding-bottom: 4px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.sec-h h2 { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; }
+.sec-h .meta { font-size: 13px; color: var(--muted); }
+.note { color: var(--muted); font-size: 14px; }
+p { margin: 0 0 10px; }
+
+/* Bottom nav */
+.nav { position: fixed; left: 0; right: 0; bottom: 0; background: var(--ink); border-top: 1px solid #22242a; display: flex; padding-bottom: env(safe-area-inset-bottom, 0); z-index: 20; }
+.nav a { flex: 1; text-align: center; color: #c8c8c4; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .05em; text-transform: uppercase; padding: 10px 2px 9px; border-top: 3px solid transparent; line-height: 1.1; }
+.nav a .ic { display: block; font-size: 18px; margin-bottom: 2px; font-family: var(--body); }
+.nav a[aria-current="page"] { color: var(--gold); border-top-color: var(--gold); }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--ink-fg); border-radius: 12px; padding: 18px 18px 18px; position: relative; overflow: hidden; }
+.hero .kicker { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.hero h2 { font-size: 40px; font-weight: 800; line-height: .95; margin: 6px 0 8px; }
+.hero p { color: #d8d8d4; font-size: 15px; margin: 0; }
+.goal { margin-top: 14px; display: flex; align-items: center; gap: 12px; background: #15171b; border: 1px solid #2a2c33; border-radius: 10px; padding: 10px 12px; }
+.goal .medal { font-size: 30px; }
+.goal b { font-family: var(--display); font-size: 20px; font-weight: 800; letter-spacing: .02em; display: block; line-height: 1; }
+.goal small { color: var(--ink-muted); font-size: 12px; }
+
+.next { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--gold); border-radius: 10px; padding: 12px 14px; text-decoration: none; display: block; }
+.next .k { font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.next .opp { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1; margin: 4px 0; }
+.next .when { font-size: 15px; }
+.next .cd { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--gold-deep); margin-top: 4px; }
+:root[data-theme="dark"] .next .cd, :root:not([data-theme="light"]) .next .cd { color: var(--gold); }
+
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.quick a { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; text-decoration: none; }
+.quick a b { font-family: var(--display); font-weight: 800; font-size: 20px; display: block; line-height: 1; }
+.quick a small { color: var(--muted); font-size: 13px; }
+
+/* Games list */
+.games { display: grid; gap: 10px; }
+.gcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; text-decoration: none; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; }
+.gcard.ours { border-left: 5px solid var(--gold); }
+.gcard .lbl { font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.gcard .opp { font-family: var(--display); font-weight: 800; font-size: 24px; line-height: 1.05; }
+.gcard .when { font-size: 14px; color: var(--muted); }
+.gcard .tip { text-align: right; font-family: var(--display); font-weight: 800; font-size: 26px; line-height: 1; }
+.gcard .tip small { display: block; font-family: var(--body); font-weight: 400; font-size: 12px; color: var(--muted); }
+.gcard .done { grid-column: 1 / -1; font-size: 14px; }
+.day h3 { font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; margin: 18px 0 8px; }
+
+/* Game day */
+.back { background: none; border: 0; color: var(--muted); font-family: var(--display); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; padding: 0 0 10px; text-decoration: none; display: inline-block; }
+.gd-h { background: var(--ink); color: var(--ink-fg); border-radius: 12px; padding: 16px 18px; }
+.gd-h .k { color: var(--gold); font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 13px; }
+.gd-h h2 { font-size: 34px; font-weight: 800; line-height: 1; margin: 4px 0 6px; }
+.gd-h .when { font-size: 15px; color: #d8d8d4; }
+.times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+.time { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.time b { font-family: var(--display); font-weight: 800; font-size: 30px; line-height: 1; display: block; }
+.time small { color: var(--muted); font-size: 13px; }
+.time.arrive { border-color: var(--gold); box-shadow: inset 0 3px 0 var(--gold); }
+.venue { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.venue b { font-family: var(--display); font-size: 20px; font-weight: 800; display: block; line-height: 1.1; }
+.venue .map { display: inline-block; margin-top: 8px; border: 2px solid var(--fg); border-radius: 8px; padding: 6px 12px; font-family: var(--display); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; text-decoration: none; }
+.btn { display: inline-block; border: 2px solid var(--fg); border-radius: 8px; padding: 7px 12px; font-family: var(--display); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; text-decoration: none; background: transparent; color: inherit; }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.list li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; display: flex; gap: 10px; align-items: flex-start; }
+.list li .n { font-family: var(--display); font-weight: 800; color: var(--gold-deep); min-width: 22px; font-size: 18px; line-height: 1.2; }
+:root[data-theme="dark"] .list li .n, :root:not([data-theme="light"]) .list li .n { color: var(--gold); }
+.check li::before { content: "☐"; color: var(--muted); }
+
+/* Team */
+.roster { display: grid; gap: 8px; }
+.player { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: center; }
+.player .num { font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 1; color: var(--ink); background: var(--gold); border-radius: 8px; text-align: center; padding: 8px 0; }
+.player .nm { font-family: var(--display); font-weight: 800; font-size: 21px; line-height: 1.05; }
+.player .intro { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.coach .num { background: var(--ink); color: var(--gold); font-size: 15px; letter-spacing: .05em; padding: 12px 0; }
+
+/* Mindset */
+.steps { counter-reset: s; display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 12px 54px; position: relative; }
+.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 12px; top: 10px; width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 18px; display: grid; place-items: center; }
+.steps b { font-family: var(--display); font-size: 19px; font-weight: 800; display: block; line-height: 1.1; margin-bottom: 2px; }
+.cues { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+.cue { background: var(--ink); color: var(--gold); font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: .04em; padding: 6px 12px; border-radius: 8px; }
+.motto { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1.05; text-align: center; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+
+.foot { margin-top: 34px; font-size: 12px; color: var(--muted); text-align: center; line-height: 1.5; }
+@media (min-width: 600px) { .quick { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="band-row">
+    <img src="/img/logo.png" alt="Melbourne Tigers">
+    <div>
+      <h1>Tigers 14.8</h1>
+      <div class="sub">Southern Peninsula Tournament · 6 to 8 November 2026</div>
+    </div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<nav class="nav" id="nav">
+  <a href="#home" data-tab="home"><span class="ic">🏠</span>Home</a>
+  <a href="#games" data-tab="games"><span class="ic">📅</span>Games</a>
+  <a href="/playbook/"><span class="ic">📋</span>Playbook</a>
+  <a href="#team" data-tab="team"><span class="ic">🐯</span>Team</a>
+  <a href="#mindset" data-tab="mindset"><span class="ic">🧠</span>Mindset</a>
+  <a href="#scout" data-tab="scout"><span class="ic">🔎</span>Scout</a>
+</nav>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const PLAYHQ = 'https://www.playhq.com/basketball-victoria/org/melbourne-tigers-basketball-club/new-balance-representative-tournament-2026/u14-boys-division-15/f03b3c8f';
+const GAME = id => PLAYHQ.replace(/\/f03b3c8f$/, '') + '/game-centre/' + id;
+const ARRIVE_MIN = 30;
+
+/* ---------- Fixed tournament data ---------- */
+const VENUES = {
+  somerville: { name: 'Somerville Recreation and Community Centre', q: 'Somerville Recreation and Community Centre, Somerville VIC' },
+  bonbeach: { name: 'Bonbeach Basketball Stadium', q: 'Bonbeach Basketball Stadium, Bonbeach VIC' },
+  patterson: { name: 'Patterson River Secondary College', q: 'Patterson River Secondary College, Seaford VIC' },
+  rosebud: { name: 'Rosebud Primary School', q: 'Rosebud Primary School, Rosebud VIC' },
+  banyan: { name: 'Banyan Fields Primary School', q: 'Banyan Fields Primary School, Carrum Downs VIC' },
+  springers: { name: 'Springers Leisure Centre', q: 'Springers Leisure Centre, 400 Cheltenham Rd, Keysborough VIC', ll: '-37.99612,145.15418' },
+};
+// All times are Melbourne local (AEDT). at = ISO with +11:00.
+const OURS = 'Melbourne U14 Boys 8';
+const FIXTURE = [
+  { id: '49420660', round: 'Round 1', pool: 'Pool A', at: '2026-11-06T19:35:00+11:00', home: 'Pakenham U14 Boys 7', away: 'Camberwell U14 Boys 12', venue: 'somerville', court: 'Court 1' },
+  { id: 'dc70ebf4', round: 'Round 1', pool: 'Pool B', at: '2026-11-06T19:35:00+11:00', home: OURS, away: 'Southern Peninsula U14 Boys Future Sharks Blue', venue: 'somerville', court: 'Court 2' },
+  { id: '2d78878d', round: 'Round 1', pool: 'Pool A', at: '2026-11-07T08:00:00+11:00', home: 'Camberwell U14 Boys 9', away: 'Darebin U14 Boys 4', venue: 'patterson', court: 'Court 1' },
+  { id: '8fa66894', round: 'Round 1', pool: 'Pool B', at: '2026-11-07T10:25:00+11:00', home: 'Camberwell U14 Boys 10', away: 'Darebin U14 Boys 3', venue: 'rosebud', court: 'Court 1' },
+  { id: 'ad5ef185', round: 'Round 2', pool: 'Pool B', at: '2026-11-07T12:45:00+11:00', home: 'Darebin U14 Boys 3', away: OURS, venue: 'bonbeach', court: 'Court 1' },
+  { id: '0587baeb', round: 'Round 2', pool: 'Pool A', at: '2026-11-07T13:35:00+11:00', home: 'Darebin U14 Boys 4', away: 'Pakenham U14 Boys 7', venue: 'patterson', court: 'Court 3' },
+  { id: '67939f06', round: 'Round 2', pool: 'Pool A', at: '2026-11-07T14:20:00+11:00', home: 'Camberwell U14 Boys 9', away: 'Camberwell U14 Boys 12', venue: 'patterson', court: 'Court 1' },
+  { id: '651d4520', round: 'Round 2', pool: 'Pool B', at: '2026-11-07T16:45:00+11:00', home: 'Camberwell U14 Boys 10', away: 'Southern Peninsula U14 Boys Future Sharks Blue', venue: 'patterson', court: 'Court 1' },
+  { id: 'bd87d88a', round: 'Round 3', pool: 'Pool A', at: '2026-11-07T18:20:00+11:00', home: 'Camberwell U14 Boys 9', away: 'Pakenham U14 Boys 7', venue: 'banyan', court: 'Court 1' },
+  { id: '5b9af400', round: 'Round 3', pool: 'Pool B', at: '2026-11-07T19:55:00+11:00', home: 'Camberwell U14 Boys 10', away: OURS, venue: 'patterson', court: 'Court 2' },
+  { id: '9ee60999', round: 'Round 3', pool: 'Pool B', at: '2026-11-07T19:55:00+11:00', home: 'Southern Peninsula U14 Boys Future Sharks Blue', away: 'Darebin U14 Boys 3', venue: 'patterson', court: 'Court 3' },
+  { id: '410819fb', round: 'Round 3', pool: 'Pool A', at: '2026-11-08T08:50:00+11:00', home: 'Camberwell U14 Boys 12', away: 'Darebin U14 Boys 4', venue: 'springers', court: 'Court 1' },
+  { id: '7345dfd9', round: 'Finals', pool: 'Finals', label: 'Semi Final 1', note: '1st Pool A v 2nd Pool B', at: '2026-11-08T11:10:00+11:00', home: 'TBC', away: 'TBC', venue: 'springers', court: 'Court 1', ours: true },
+  { id: '', round: 'Finals', pool: 'Finals', label: 'Semi Final 2', note: '1st Pool B v 2nd Pool A', at: '2026-11-08T11:10:00+11:00', home: 'TBC', away: 'TBC', venue: 'springers', court: 'Court 2', ours: true },
+  { id: '', round: 'Finals', pool: 'Finals', label: '5th/6th classification', note: '3rd Pool A v 3rd Pool B', at: '2026-11-08T11:10:00+11:00', home: 'TBC', away: 'TBC', venue: 'springers', court: 'Court 3', ours: true },
+  { id: '', round: 'Finals', pool: 'Finals', label: '7th/8th classification', note: '4th Pool A v 4th Pool B', at: '2026-11-08T11:10:00+11:00', home: 'TBC', away: 'TBC', venue: 'springers', court: 'Court 5', ours: true },
+  { id: '', round: 'Finals', pool: 'Finals', label: 'Gold medal game', note: 'Winners of the two semi-finals', at: '2026-11-08T16:40:00+11:00', home: 'TBC', away: 'TBC', venue: 'springers', court: 'Court 1', ours: true },
+];
+const ROSTER = [
+  { n: 51, name: 'Andy Matiszak', intro: 'Relentless on the glass. Nothing bounces near Andy twice.' },
+  { n: 62, name: 'Charlie Saliba', intro: 'Sees the pass before it is there. Keeps the ball moving and the defence guessing.' },
+  { n: 96, name: 'Dion Kontonis', intro: 'Head up, always looking for the open man. Steady hands when it gets loud.' },
+  { n: 5, name: 'Hamish McKay', intro: 'First to the loose ball, first back on defence. Pure engine.' },
+  { n: 12, name: 'Jack Hamilton', intro: 'Calm under pressure. The kind of teammate you want with the ball late.' },
+  { n: 58, name: 'Kyrie Jabalde', intro: 'Quick feet and quicker hands. Turns one stop into the next score.' },
+  { n: 45, name: 'Mako Musa', intro: 'Big presence inside. Protects the paint and finishes strong.' },
+  { n: 61, name: 'Oliver Glassford', intro: 'Reads the game a step ahead. Smart cuts, smart screens, no wasted motion.' },
+  { n: 35, name: 'Otto Kvid', intro: 'Never stops talking on defence. Makes everyone around him better.' },
+  { n: 52, name: 'Tom Byrne', intro: 'Shooter with range. Give him a sliver of space and it is going up.' },
+];
+const COACHES = [
+  { role: 'Head coach', name: 'Herman Mau' },
+  { role: 'Assistant coach', name: 'John Kontonis' },
+];
+const BRING = [
+  'Playing singlet and shorts (Tigers)',
+  'Warm-up top or team hoodie',
+  'Basketball shoes (not worn to the venue in the rain)',
+  'Two full water bottles',
+  'Snacks: banana, sandwich, muesli bar',
+  'Towel and spare socks',
+  'Mouthguard, if you use one',
+  'Phone charged, with this app open',
+  'Sunday: enough food for a full day at Springers',
+];
+
+/* ---------- Helpers ---------- */
+const shortName = t => t === OURS ? 'Tigers 14.8' : (t || '').replace(/\s+U\d+\s+(Boys|Girls)\s+/i, ' ').replace(/Future Sharks Blue/i, 'Sharks Blue').replace(/Southern Peninsula/i, 'Sth Peninsula');
+const fmt = (iso, opts) => new Date(iso).toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', ...opts });
+const fmtTime = iso => fmt(iso, { hour: 'numeric', minute: '2-digit' }).replace(' ', '').toLowerCase();
+const fmtDay = iso => fmt(iso, { weekday: 'long', day: 'numeric', month: 'long' });
+const fmtShortDay = iso => fmt(iso, { weekday: 'short' });
+const minus = (iso, mins) => new Date(new Date(iso).getTime() - mins * 60000).toISOString();
+const isOurs = g => g.home === OURS || g.away === OURS || g.ours;
+const oppOf = g => g.home === OURS ? g.away : g.away === OURS ? g.home : null;
+const mapLink = v => 'https://maps.google.com/?q=' + encodeURIComponent(VENUES[v].ll || VENUES[v].q);
+const countdown = iso => {
+  const ms = new Date(iso) - Date.now();
+  if (ms < -150 * 60000) return 'Played';
+  if (ms < 0) return 'Underway now';
+  const m = Math.round(ms / 60000);
+  if (m < 60) return `Tips off in ${m} min`;
+  const h = Math.floor(m / 60);
+  if (h < 36) return `
