@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tigers 14.8 Tournament</title>
+<meta name="description" content="Melbourne Tigers 14.8 tournament hub: schedule, game days, playbook, team and scouting for the New Balance Southern Peninsula Representative Tournament.">
+<meta name="theme-color" content="#050708">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Tigers 14.8">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/fav.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('tigers-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<style>
+:root {
+  --ink: #050708; --ink-2: #121418; --ink-fg: #f6f6f4; --ink-muted: #9a9ca3;
+  --gold: #ffcb08; --gold-deep: #b98f00; --red: #ec1f28;
+  --bg: #ededea; --surface: #ffffff; --fg: #121316; --muted: #5f6269; --line: #d6d7d3; --soft: #f5f5f2;
+  --good: #1f7a3a; --bad: #b4262c;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #0f1012; --surface: #1a1b1e; --fg: #f1f1ee; --muted: #a5a7ad; --line: #30323a; --soft: #222327;
+  --good: #58c27a; --bad: #ff6b70; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45; padding-bottom: calc(66px + env(safe-area-inset-bottom, 0)); }
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; }
+a { color: inherit; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+[hidden] { display: none !important; }
+.num { font-family: var(--display); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* Header */
+.band { background: var(--ink); color: var(--ink-fg); padding: calc(10px + env(safe-area-inset-top, 0)) 16px 12px; position: sticky; top: 0; z-index: 20; }
+.band-row { display: flex; align-items: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+.band img { width: 42px; height: 42px; object-fit: contain; }
+.band .eyebrow { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.band h1 { font-size: 25px; font-weight: 800; line-height: 1; letter-spacing: .01em; }
+.theme-toggle { margin-left: auto; width: 38px; height: 38px; border-radius: 10px; border: 1px solid #2a2c33; background: #16181d; color: var(--gold); font-size: 17px; display: grid; place-items: center; }
+
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+.view { display: none; }
+.view.active { display: block; }
+section + section { margin-top: 24px; }
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 10px; border-bottom: 2px solid var(--fg); padding-bottom: 5px; }
+.sec-h h2 { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; }
+.sec-h .meta { font-size: 13px; color: var(--muted); }
+.note { color: var(--muted); font-size: 13px; }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--ink-fg); border-radius: 12px; padding: 18px 16px; margin-bottom: 18px; background-image: radial-gradient(120% 90% at 100% 0, rgba(255,203,8,.14), transparent 55%); }
+.hero .goal { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.hero h2 { font-size: 30px; font-weight: 800; line-height: 1.02; margin: 4px 0 2px; }
+.hero p { color: #c8c8c4; font-size: 14px; margin: 6px 0 0; }
+
+/* Next game card */
+.next { background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--gold); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+.next .kick { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); }
+.next .vs { font-family: var(--display); font-weight: 800; font-size: 22px; line-height: 1.05; margin: 3px 0; }
+.next .meta { font-size: 14px; color: var(--muted); }
+.next .meta b { color: var(--fg); font-weight: 600; }
+
+/* Quick tiles */
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tile { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; text-decoration: none; }
+.tile .ic { font-size: 22px; }
+.tile .t { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: .02em; margin-top: 6px; }
+.tile .d { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+.tile.wide { grid-column: 1 / -1; }
+.tile.dark { background: var(--ink); color: var(--ink-fg); border-color: #24262c; }
+.tile.dark .d { color: #b7b8bd; }
+.tile.dark .t { color: var(--gold); }
+
+/* Schedule / game rows */
+.gcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+.gcard.us { border-left: 5px solid var(--gold); }
+.gcard > summary { list-style: none; cursor: pointer; padding: 13px 14px; display: grid; grid-template-columns: 54px 1fr auto; gap: 12px; align-items: center; }
+.gcard > summary::-webkit-details-marker { display: none; }
+.gcard .daybox { text-align: center; background: var(--ink); color: var(--ink-fg); border-radius: 8px; padding: 6px 4px; }
+.gcard .daybox .d { font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1; color: var(--gold); }
+.gcard .daybox .m { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #c8c8c4; }
+.gcard .who { font-family: var(--display); font-weight: 800; font-size: 19px; line-height: 1.08; }
+.gcard .who small { display: block; font-family: var(--body); font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.gcard .tm { text-align: right; }
+.gcard .tm b { font-family: var(--display); font-weight: 800; font-size: 18px; }
+.gcard .tm small { display: block; font-size: 11px; color: var(--muted); }
+.gcard .chev { color: var(--muted); font-size: 12px; }
+.gbody { border-top: 1px solid var(--line); padding: 4px 14px 14px; }
+.gbody h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 14px 0 6px; }
+.gbody ul { margin: 0; padding-left: 18px; }
+.gbody li { margin: 3px 0; }
+.maplink { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-weight: 600; color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+.arrive { background: var(--soft); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 14px; }
+.arrive b { color: var(--fg); }
+
+/* Team */
+.roster { display: grid; gap: 8px; }
+.player { display: grid; grid-template-columns: 50px 1fr; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.player.coach { border-left: 5px solid var(--red); }
+.player .jersey { font-family: var(--display); font-weight: 800; font-size: 26px; text-align: center; background: var(--ink); color: var(--gold); border-radius: 8px; padding: 6px 0; }
+.player .pn { font-family: var(--display); font-weight: 800; font-size: 18px; line-height: 1.05; }
+.player .pi { font-size: 13px; color: var(--muted); line-height: 1.3; margin-top: 2px; }
+
+/* Mindset */
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px; margin-bottom: 10px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.step .n { font-family: var(--display); font-weight: 800; font-size: 22px; color: var(--gold-deep); line-height: 1; }
+.step h4 { font-size: 17px; }
+.step p { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.cues { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 6px; }
+.cue { background: var(--ink); color: var(--gold); font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .03em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; }
+
+/* Bottom nav */
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--ink); border-top: 1px solid #23252b; display: flex; padding-bottom: env(safe-area-inset-bottom, 0); }
+.tabbar a, .tabbar button { flex: 1; background: none; border: 0; color: #9a9ca3; text-decoration: none; padding: 9px 2px 8px; text-align: center; font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.tabbar .ic { display: block; font-size: 18px; line-height: 1; margin-bottom: 3px; }
+.tabbar .on { color: var(--gold); }
+.foot { margin-top: 30px; font-size: 12px; color: var(--muted); text-align: center; line-height: 1.5; }
+@media (max-width: 380px) { .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="band-row">
+    <img src="/img/logo.png" alt="Melbourne Tigers">
+    <div>
+      <div class="eyebrow">Melbourne Tigers</div>
+      <h1>14.8 Tournament</h1>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch colour mode">◑</button>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <div class="view active" id="view-home">
+    <div class="hero">
+      <div class="goal">★ Bring home the gold</div>
+      <h2>New Balance Southern Peninsula Tournament</h2>
+      <p>U14 Boys Division 15 · 6–8 November 2026. Everything we need for the weekend in one place: schedule, game days, our plays, the team and the scouting.</p>
+    </div>
+    <div class="next" id="nextCard"></div>
+    <div class="tiles">
+      <a class="tile" data-go="schedule"><div class="ic">📅</div><div class="t">Schedule</div><div class="d">Every game, time and venue</div></a>
+      <a class="tile" data-go="team"><div class="ic">🏀</div><div class="t">The Team</div><div class="d">Roster and player intros</div></a>
+      <a class="tile dark wide" href="/playbook/"><div class="ic">📋</div><div class="t">Playbook</div><div class="d">Step through every play and set, then test yourself. Offence, baseline inbounds and our pick-and-roll defence.</div></a>
+      <a class="tile" data-go="mindset"><div class="ic">🧠</div><div class="t">Game Head</div><div class="d">Our pre-game routine</div></a>
+      <a class="tile" href="/scout/"><div class="ic">📊</div><div class="t">Scouting</div><div class="d">Live results and opposition</div></a>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="view" id="view-schedule">
+    <section>
+      <div class="sec-h"><h2>Our games</h2><span class="meta">Pool B</span></div>
+      <div id="ourGames"></div>
+    </section>
+    <section>
+      <div class="sec-h"><h2>Sunday finals</h2><span class="meta">Springers Leisure Centre</span></div>
+      <div id="finalGames"></div>
+      <p class="note">Every team plays on Sunday. Finish top two in the pool and the 11:10 game is a semi-final; win it and we play the Gold Medal Game at 4:40pm. The 11:10 opponent is set by where we finish after the three pool games.</p>
+    </section>
+    <p class="note" style="text-align:center;margin-top:18px">Live scores and the full division fixture are in <a href="/scout/" style="color:var(--gold-deep);font-weight:600">Scouting</a>.</p>
+  </div>
+
+  <!-- TEAM -->
+  <div class="view" id="view-team">
+    <section>
+      <div class="sec-h"><h2>The Team</h2><span class="meta">14.8</span></div>
+      <div class="roster" id="roster"></div>
+    </section>
+    <section>
+      <div class="sec-h"><h2>Coaches</h2></div>
+      <div class="roster" id="coaches"></div>
+    </section>
+  </div>
+
+  <!-- MINDSET -->
+  <div class="view" id="view-mindset">
+    <section>
+      <div class="sec-h"><h2>Game Head</h2><span class="meta">before tip-off</span></div>
+      <p class="note" style="margin-bottom:14px">Nerves mean you care. The best players feel them too; they just have a routine that turns nerves into energy. Run these from the moment you arrive.</p>
+      <div id="mindsteps"></div>
+    </section>
+    <section>
+      <div class="sec-h"><h2>On the floor</h2></div>
+      <div class="cues">
+        <span class="cue">Next play</span><span class="cue">Talk on D</span><span class="cue">First to the floor</span><span class="cue">Trust your mate</span><span class="cue">Breathe & reset</span>
+      </div>
+      <p class="note">Made a mistake? One breath, say "next play", and sprint back. We judge effort, not perfection.</p>
+    </section>
+  </div>
+</main>
+
+<nav class="tabbar" id="tabbar">
+  <button data-go="home" class="on"><span class="ic">🏠</span>Home</button>
+  <button data-go="schedule"><span class="ic">📅</span>Games</button>
+  <a href="/playbook/"><span class="ic">📋</span>Plays</a>
+  <button data-go="team"><span class="ic">🏀</span>Team</button>
+  <a href="/scout/"><span class="ic">📊</span>Scout</a>
+</nav>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const map = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+
+// Static fixture (works with no network). Times are Melbourne local.
+const GAMES = [
+  { us: true, round: 'Pool game 1', opp: 'Southern Peninsula Future Sharks Blue', dt: '2026-11-06T19:35', venue: 'Somerville Recreation and Community Centre', court: 'Court 2', mapq: 'Somerville Recreation and Community Centre, Somerville VIC' },
+  { us: true, round: 'Pool game 2', opp: 'Darebin 3', dt: '2026-11-07T12:45', venue: 'Bonbeach Basketball Stadium', court: 'Court 1', mapq: 'Bonbeach Basketball Stadium, Bonbeach VIC' },
+  { us: true, round: 'Pool game 3', opp: 'Camberwell 10', dt: '2026-11-07T19:55', venue: 'Patterson River Secondary College', court: 'Court 2', mapq: 'Patterson River Secondary College, Seaford VIC' },
+];
+const FINALS = [
+  { round: 'Game 4 · crossover', opp: 'Set by pool finish', dt: '2026-11-08T11:10', venue: 'Springers Leisure Centre', court: 'Keysborough', mapq: 'Springers Leisure Centre, Keysborough VIC' },
+  { round: 'Gold Medal Game', opp: 'If we win the semi', dt: '2026-11-08T16:40', venue: 'Springers Leisure Centre', court: 'Court 1', mapq: 'Springers Leisure Centre, Keysborough VIC' },
+];
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function parse(dt){ const [d,t]=dt.split('T'); const [Y,M,D]=d.split('-').map(Number); const [h,m]=t.split(':').map(Number); return new Date(Y,M-1,D,h,m); }
+function fmtTime(x){ let h=x.getHours(), m=x.getMinutes(); const ap=h<12?'am':'pm'; h=h%12||12; return h+(m?':'+String(m).padStart(2,'0'):'')+ap; }
+function arrive(x){ const a=new Date(x.getTime()-30*60000); return fmtTime(a); }
+
+function nextGame(){
+  const now = Date.now();
+  const all = [...GAMES, ...FINALS].map(g=>({...g, at: parse(g.dt)})).sort((a,b)=>a.at-b.at);
+  return all.find(g => g.at.getTime() + 60*60000 > now) || all[all.length-1];
+}
+function renderNext(){
+  const g = nextGame();
+  const at = g.at, now = Date.now();
+  const mins = Math.round((at - now)/60000);
+  let when;
+  if (mins < -60) when = 'Finished';
+  else if (mins < 60 && mins > -60) when = 'Playing around now';
+  else { const sameDay = at.toDateString()===new Date().toDateString(); when = (sameDay?'Today':DAYS[at.getDay()]+' '+at.getDate()+' '+MON[at.getMonth()]) + ' · ' + fmtTime(at); }
+  $('#nextCard').innerHTML = `<div class="kick">Next game · ${esc(g.round)}</div>
+    <div class="vs">Tigers 14.8 <span style="color:var(--muted);font-weight:600">v</span> ${esc(g.opp)}</div>
+    <div class="meta"><b>${esc(when)}</b> · ${esc(g.venue)}${g.court?', '+esc(g.court):''}</div>
+    <div class="meta" style="margin-top:4px">Be there by <b>${arrive(at)}</b> (30 min before).</div>`;
+}
+
+function gameCard(g, isUs){
+  const at = parse(g.dt);
+  const day = DAYS[at.getDay()], date = at.getDate();
+  return `<details class="gcard ${isUs?'us':''}">
+    <summary>
+      <div class="daybox"><div class="d">${date}</div><div class="m">${day}</div></div>
+      <div class="who">${isUs?'v ':''}${esc(g.opp)}<small>${esc(g.round)}${g.court?' · '+esc(g.court):''}</small></div>
+      <div class="tm"><b>${fmtTime(at)}</b><small>arrive ${arrive(at)}</small><span class="chev">tap ▾</span></div>
+    </summary>
+    <div class="gbody">
+      <div class="arrive">🕑 Be at the venue by <b>${arrive(at)}</b>, 30 minutes before the ${fmtTime(at)} tip-off. Warm-up is run by the coaches from the moment you arrive.</div>
+      <h4>Where</h4>
+      <div>${esc(g.venue)}${g.court?' · '+esc(g.court):''}</div>
+      <a class="maplink" href="${map(g.mapq)}" target="_blank" rel="noopener">📍 Open in Maps</a>
+      <h4>Bring</h4>
+      <ul><li>Playing singlet and shorts (both colours if you have them), plus a warm layer</li><li>Basketball shoes and a spare pair of socks</li><li>A full drink bottle (and refill between games)</li><li>Mouthguard if you wear one</li><li>Snack for between games and sunscreen for Sunday</li></ul>
+      <h4>Game head</h4>
+      <ul><li>Run the <a data-go="mindset" style="color:var(--gold-deep);font-weight:600">pre-game routine</a> once you've arrived.</li><li>One job: bring energy and talk on defence from the first whistle.</li></ul>
+    </div>
+  </details>`;
+}
+function renderSchedule(){
+  $('#ourGames').innerHTML = GAMES.map(g=>gameCard(g, true)).join('');
+  $('#finalGames').innerHTML = FINALS.map(g=>gameCard(g, false)).join('');
+}
+
+const ROSTER = [
+  { n: 5,  name: 'Hamish McKay',    intro: 'Engine of the group. First back on defence and never takes a possession off.' },
+  { n: 12, name: 'Jack Hamilton',   intro: 'Steady hands under pressure. Makes the simple play and makes it on time.' },
+  { n: 35, name: 'Otto Kvid',       intro: 'Does the dirty work: screens, box-outs and loose balls that win games.' },
+  { n: 45, name: 'Mako Musa',       intro: 'Quick first step and fearless going to the rim. A nightmare to stay in front of.' },
+  { n: 51, name: 'Andy Matiszak',   intro: 'Competitor. Guards the best player and relishes the matchup.' },
+  { n: 52, name: 'Tom Byrne',       intro: 'Team-first and unselfish. Always finds the open man and keeps the ball moving.' },
+  { n: 58, name: 'Kyrie Jabalde',   intro: 'Spark off any start. Brings pace and energy that lifts the whole bench.' },
+  { n: 61, name: 'Oliver Glassford',intro: 'Long, versatile and switchable. Guards one through four and finishes above the rim.' },
+  { n: 62, name: 'Charlie Saliba',  intro: 'Smart reader of the game. Always in the right spot, on both ends.' },
+  { n: 96, name: 'Dion Kontonis',   intro: 'Vocal leader. Sets the tone with his effort and talk from tip to buzzer.' },
+];
+const COACHES = [
+  { role: 'Head Coach', name: 'Herman Mau', intro: 'Runs the game plan and the rotations. Sets the standards we play to.' },
+  { role: 'Assistant Coach', name: 'John Kontonis', intro: 'Scouting, stats and the mental side. Gets us ready for whoever we face.' },
+];
+function renderTeam(){
+  $('#roster').innerHTML = ROSTER.map(p=>`<div class="player"><div class="jersey">${p.n}</div><div><div class="pn">${esc(p.name)}</div><div class="pi">${esc(p.intro)}</div></div></div>`).join('');
+  $('#coaches').innerHTML = COACHES.map(c=>`<div class="player coach"><div class="jersey" style="font-size:13px;line-height:1.1;padding:10px 4px">${esc(c.role.split(' ')[0])}</div><div><div class="pn">${esc(c.name)}</div><div class="pi">${esc(c.role)} · ${esc(c.intro)}</div></div></div>`).join('');
+}
+
+const MIND = [
+  { h: 'Arrive and settle', cues: ['Shoes on','Bottle full'], p: 'Get changed, drink, and find the group. Phones away. You are here to play now.' },
+  { h: 'Three big breaths', cues: ['In 4','Out 6'], p: 'Breathe in for four counts, out for six, three times. Slow breathing tells your body the nerves are just energy.' },
+  { h: 'Picture one good play', cues: ['See it'], p: 'Close your eyes and see yourself making one play you know you can make: a good screen, a stop, a pass on time. You have done it before.' },
+  { h: 'Pick your one job', cues: ['My job'], p: 'Choose one thing you will do every possession, like talk on defence or sprint the floor. Control that and the rest follows.' },
+  { h: 'Team in, loud', cues: ['Tigers!'], p: 'Hands in with the group. We walk on together, we talk the whole game, and we back each other no matter the score.' },
+];
+function renderMindset(){
+  $('#mindsteps').innerHTML = MIND.map((m,i)=>`<div class="step"><div class="n">${i+1}</div><div><h4>${esc(m.h)}</h4><div class="cues">${m.cues.map(c=>`<span class="cue">${esc(c)}</span>`).join('')}</div><p>${esc(m.p)}</p></div></div>`).join('');
+}
+
+// Navigation
+const views = ['home','schedule','team','mindset'];
+function go(name){
+  if (!views.includes(name)) return;
+  views.forEach(v => $('#view-'+v).classList.toggle('active', v===name));
+  document.querySelectorAll('.tabbar [data-go]').forEach(b => b.classList.toggle('on', b.dataset.go===name));
+  try { history.replaceState(null,'','#'+name); } catch(e){}
+  window.scrollTo(0,0);
+  renderNext();
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b){ e.preventDefault(); go(b.dataset.go); } });
+
+$('#themeToggle').addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme==='dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('tigers-theme', next); } catch(e){}
+});
+
+renderNext(); renderSchedule(); renderTeam(); renderMindset();
+const start = (location.hash||'').replace('#','');
+if (views.includes(start)) go(start);
+})();
+</script>
+</body>
+</html>

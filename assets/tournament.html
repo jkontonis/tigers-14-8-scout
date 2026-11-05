@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-AU" data-theme="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tigers 14.8 Tournament</title><meta name="description" content="One team. One weekend. Fixtures, our playbook, preparation and opposition scouting for Melbourne Tigers 14.8.">
+<meta name="theme-color" content="#050708"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Tigers 14.8">
+<link rel="manifest" href="/manifest.json"><link rel="icon" href="/img/fav.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/tournament.css?v=1">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('tigers-theme')||localStorage.getItem('scout-theme')||'dark'}catch{}</script>
+</head><body>
+<header class="app-header"><a class="brand" href="#home" aria-label="Tigers tournament home"><img src="/img/logo.png" alt="Melbourne Tigers"><span><small>MELBOURNE TIGERS</small><strong>14.8 TOURNAMENT</strong></span></a><button id="app-theme" class="icon-button" aria-label="Switch colour mode"></button></header>
+<main id="app-main">
+<section id="page-home" class="app-page"><div class="hero-intro"><p class="eyebrow">SOUTHERN PENINSULA / 6-8 NOV 2026</p><h1>ONE TEAM.<br><span>ONE WEEKEND.</span></h1><p>Our games. Our plays. Our next challenge.</p></div><div id="home-game" class="loading-card">Loading our next game...</div><div id="home-tools"></div><div class="section-title"><h2>KNOW OUR PLAYS</h2><a href="#playbook">View all <span aria-hidden="true">›</span></a></div><div id="home-plays" class="play-rail"></div><div id="home-record"></div></section>
+<section id="page-games" class="app-page" hidden><div class="page-title"><p class="eyebrow">THE WEEKEND</p><h1>GAME CENTRE</h1><p>Tip-off, arrival, venue and preparation, together.</p></div><div class="segment" id="games-segment"><button data-game-filter="ours" aria-pressed="true">Our games</button><button data-game-filter="division" aria-pressed="false">All games</button><button data-game-filter="finals" aria-pressed="false">Finals</button></div><div id="games-list"></div></section>
+<section id="page-playbook" class="app-page" hidden><div id="play-library"><div class="page-title"><p class="eyebrow">LEARN IT. KNOW YOUR JOB.</p><h1>OUR PLAYBOOK</h1><p>Watch the play, choose your position, then test yourself.</p></div><div id="play-grid" class="play-grid"></div><p class="small-note">Court numbers identify positions, not singlet numbers. All instructions and coach drawings are from the existing team playbook.</p></div><div id="play-detail" hidden><a class="back-link" href="#playbook">‹ All plays</a><div id="play-host"></div></div></section>
+<section id="page-team" class="app-page" hidden><div class="page-title"><p class="eyebrow">MELBOURNE TIGERS / U14 BOYS 8</p><h1>OUR TEAM</h1></div><div class="segment"><button data-team-filter="roster" aria-pressed="true">The group</button><button data-team-filter="mindset" aria-pressed="false">Game Head</button><button data-team-filter="kit" aria-pressed="false">Game-day kit</button></div><div id="team-content"></div></section>
+<section id="page-scout" class="app-page" hidden><div id="scout-host"></div><p id="scout-empty" class="loading-card">The playbook and team guide are available while competition data loads.</p></section>
+<footer class="app-footer"><div id="data-status" role="status">Connecting to the tournament data...</div><p>Tigers 14.8 · © John Kontonis</p></footer>
+</main>
+<nav id="app-nav" class="app-nav" aria-label="Tournament navigation"><a href="#home" data-page="home" aria-current="page"><span data-icon="home"></span>Home</a><a href="#games" data-page="games"><span data-icon="games"></span>Games</a><a href="#playbook" data-page="playbook"><span data-icon="playbook"></span>Playbook</a><a href="#team" data-page="team"><span data-icon="team"></span>Team</a><a href="#scout" data-page="scout"><span data-icon="scout"></span>Scout</a></nav>
+<noscript><p>This app needs JavaScript for its play animations and tournament data.</p></noscript>
+<script type="module" src="/assets/tournament.js?v=1"></script>
+</body></html>
