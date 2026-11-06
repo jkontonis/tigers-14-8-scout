@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{teamReport,poolStandings,comparison,coverage}from'../lib/coach-report.js';
+const fixture={id:'a',home:'Tigers',away:'Opponent',homeScore:55,awayScore:10,status:'Final',pool:'Pool B',time:'07:35 PM, Fri, 06 Nov 26'};
+const sample=()=>({meta:{},fixture:[structuredClone(fixture)],games:{a:{periods:[{team:'Tigers',scores:[55,0,55]},{team:'Opponent',scores:[10,0,10]}],boxes:[{team:'Tigers',players:[{name:'A',number:'1',TP:35,F:4,'3PT':1},{name:'B',number:'2',TP:20,F:0,'3PT':0}],totals:{TP:55,F:4}},{team:'Opponent',players:[{name:'C',number:'3',TP:10,F:0}],totals:{TP:10,F:0}}]}},ladder:[]});
+test('coach report highlights scorers from reconciled box scores',()=>{const r=teamReport(sample(),'Tigers');assert.equal(r.players[0].tp,35);assert.equal(r.top2,1);assert.equal(r.players[0].foulTrouble.length,1);assert.equal(r.boxGames,1);assert.equal(r.roster,2);});
+test('no fake first-half pattern from bulk totals',()=>{const r=teamReport(sample(),'Tigers');assert.equal(r.period,null);assert.ok(r.issues.some(x=>x.kind==='period'));});
+test('missing made free throws remain unavailable',()=>{assert.equal(teamReport(sample(),'Tigers').players[0].p1,null);});
+test('a stale official ladder cannot hide a completed result',()=>{const d=sample();d.ladder=[{rows:[{team:'Tigers',P:0,W:0,L:0},{team:'Opponent',P:0,W:0,L:0}]}];const p=poolStandings(d)[0];assert.equal(p.official,false);assert.equal(p.rows[0].team,'Tigers');assert.equal(p.rows[0].P,1);assert.equal(p.rows[0].W,1);});
+test('unplayed team is not given a fictional scouting report',()=>{const d=sample();d.fixture.push({...fixture,id:'b',home:'Next',away:'Tigers',homeScore:null,awayScore:null,status:'Upcoming'});const r=teamReport(d,'Next');assert.equal(r.gp,0);assert.equal(r.ppg,null);assert.equal(r.players.length,0);});
+test('coverage counts both team boxes and never just report placeholders',()=>assert.equal(coverage(sample()).boxScores,1));
+test('common-opponent comparison is empty without shared results',()=>assert.equal(comparison(sample(),'Tigers','Opponent').common.length,0));

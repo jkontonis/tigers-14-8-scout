@@ -12,8 +12,19 @@ if(!s.includes('collection-audit-v1')){
  replace("const completed=out.fixture.filter(final).length;", "const completed=out.fixture.filter(final).length;const ladderBehind=(out.ladder||[]).flatMap(l=>l.rows||[]).some(r=>Number.isFinite(r.P)&&r.P<out.fixture.filter(g=>final(g)&&g.pool!=='Finals'&&(g.home===r.team||g.away===r.team)).length);");
  replace("elapsed(out.meta.pagesAt.ladder)>45*60000", "(elapsed(out.meta.pagesAt.ladder)>45*60000||ladderBehind)");
  replace("out.reports=buildReports(out,config);", "out.meta.coverage=coverage(out);out.meta.reader.lastTrigger=process.env.GITHUB_EVENT_NAME||'local';out.meta.reader.runId=process.env.GITHUB_RUN_ID||null;out.meta.reader.schedule='Bounded tournament hand-off; source collection targets 10 minutes during playing hours';out.reports=buildReports(out,config);");
- // Do not spend proxy credits overnight. Heartbeat dispatches continue until the fixed end.
  replace("if(!process.env.BROWSERLESS_TOKEN)", "if(scheduled){const hour=(new Date().getUTCHours()+11)%24;if(hour<7||hour>=23){console.log('Outside Melbourne playing hours; no Browserless request');process.exit(0);}}\nif(!process.env.BROWSERLESS_TOKEN)");
+ fs.writeFileSync('scraper/cloud.mjs',s);
+}
+// Keep the connection proven by the source audit; do not retry an incompatible cheaper route every cycle.
+if(!s.includes('collection-policy-v2')){
+ s=s.replace("let reads=0,updated=false;", "let reads=0,updated=false;\nconst proxyMode=previous?.meta?.fixtureAudit?.proxyMode||'full'; // collection-policy-v2");
+ s=s.replace('page=await readPlayHQ(config.gradeUrl);','page=await readPlayHQ(config.gradeUrl,{proxyMode});');
+ s=s.replace("readPlayHQ(g.url,{kind:'game'})","readPlayHQ(g.url,{kind:'game',proxyMode})").replace("{kind:'ladder'}","{kind:'ladder',proxyMode}").replace("{kind:'stats'}","{kind:'stats',proxyMode}");
+ // Invalid splits are withheld by the reporting code; repeated fetching cannot repair source entry errors.
+ s=s.replace('&&!periodQuality(d,g).suspect','');
+ s=s.replace('elapsed(d.fetchedAt)>4*3600000','elapsed(d.fetchedAt)>12*3600000');
+ // A stale official ladder can be slow to settle; throttle attempts and use labelled provisional standings in the meantime.
+ s=s.replace("if(reads<6&&completed&&(elapsed(out.meta.pagesAt.ladder)>45*60000||ladderBehind)){", "if(reads<6&&completed&&elapsed(out.meta.pagesAt.ladderAttempt)>45*60000&&(elapsed(out.meta.pagesAt.ladder)>45*60000||ladderBehind)){\n    out.meta.pagesAt.ladderAttempt=now;");
  fs.writeFileSync('scraper/cloud.mjs',s);
 }
 let report=fs.readFileSync('lib/scouting.js','utf8');if(!report.includes("from './quality.js'")){report="import {periodQuality} from './quality.js';\n"+report;report=report.replace('if(mine&&other){','if(mine&&other&&periodQuality(det,g).valid){');fs.writeFileSync('lib/scouting.js',report);}
