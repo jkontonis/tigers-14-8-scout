@@ -3,26 +3,22 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['lib/**', 'api/publish.js', 'scraper/cloud.mjs', 'scripts/**', 'tests/**', '.github/workflows/scrape.yml', 'config.json', 'vercel.json']
+    paths: ['lib/**', 'api/publish.js', 'scraper/**', 'scripts/**', 'tests/**', '.github/workflows/scrape.yml', 'config.json', 'vercel.json']
   schedule:
-    # UTC. Explicit minute lists preserve the original five-minute playing windows.
-    # The reader also enforces the 2026 tournament date window and free-account quota.
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 8-11 6 11 *'
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 20-23 6 11 *'
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 0-11 7 11 *'
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 20-23 7 11 *'
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 0-10 8 11 *'
+    # Backup trigger. The bounded hand-off below does not depend on cron firing.
+    - cron: '17 */3 6-8 11 *'
 permissions:
   contents: read
   id-token: write
+  actions: write
 concurrency:
   group: scouting-publish
   cancel-in-progress: false
 jobs:
   update:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -30,10 +26,23 @@ jobs:
       - name: Install reviewed dependencies without install scripts
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify parser, reporting and publishing safeguards
+        id: verify
         run: |
+          node scripts/repair-collection.mjs
           node scripts/patch-ui.mjs
           node --test tests/*.test.mjs
       - name: Collect and publish scouting data
+        id: collect
+        continue-on-error: true
         env:
           BROWSERLESS_TOKEN: ${{ secrets.BROWSERLESS_TOKEN }}
+          SCOUT_SCHEDULED: ${{ github.event_name != 'push' && '1' || '0' }}
         run: node scraper/cloud.mjs
+      - name: Schedule bounded tournament successor
+        if: ${{ !cancelled() && steps.verify.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scraper/continue.mjs
+      - name: Report collection failure
+        if: ${{ steps.collect.outcome == 'failure' }}
+        run: exit 1
