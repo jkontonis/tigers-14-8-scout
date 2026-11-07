@@ -13,7 +13,8 @@ permissions:
   actions: write
 concurrency:
   group: scouting-publish
-  cancel-in-progress: false
+  # A one-off catch-up may replace a paused collector waiting to hand off.
+  cancel-in-progress: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[day2-fixture-catchup]') }}
 jobs:
   update:
     if: github.ref == 'refs/heads/main'
@@ -37,7 +38,13 @@ jobs:
         env:
           BROWSERLESS_TOKEN: ${{ secrets.BROWSERLESS_TOKEN }}
           SCOUT_SCHEDULED: ${{ github.event_name != 'push' && '1' || '0' }}
-        run: node scraper/run.mjs
+          SCOUT_FIXTURE_CATCHUP: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[day2-fixture-catchup]') && '1' || '0' }}
+        run: |
+          if [ "$SCOUT_FIXTURE_CATCHUP" = "1" ]; then
+            node scraper/fixture-catchup.mjs
+          else
+            node scraper/run.mjs
+          fi
       - name: Schedule bounded tournament successor
         if: ${{ !cancelled() && steps.verify.outcome == 'success' }}
         env:
