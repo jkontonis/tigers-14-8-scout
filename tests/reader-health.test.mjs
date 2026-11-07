@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {readerHealth,failureSnapshot} from '../lib/reader-health.js';
+const stamp='2026-11-06T21:21:18.458Z';
+const sample=()=>({meta:{scrapedAt:stamp,publishedAt:stamp,pagesAt:{fixture:stamp},reader:{state:'ready',unitsRemaining:30},warnings:[]},fixture:[{id:'12345678',homeScore:55,awayScore:10}],games:{'12345678':{boxes:[]}},reports:{Tigers:{games:1}},ladder:[],gradeStats:[]});
+test('low allowance overrides an old ready status',()=>{const h=readerHealth(sample().meta,Date.parse(stamp));assert.equal(h.state,'quota_paused');assert.ok(h.message.includes('30 units'));assert.ok(h.paused);});
+test('a failed attempt does not advance the source timestamp or alter data',()=>{const previous=sample(),copy=structuredClone(previous);const out=failureSnapshot(previous,{units:30,at:'2026-11-07T01:30:00Z',runId:'test'});assert.deepEqual(previous,copy);for(const key of ['fixture','games','reports','ladder','gradeStats'])assert.deepEqual(out[key],previous[key]);assert.equal(out.meta.scrapedAt,stamp);assert.deepEqual(out.meta.pagesAt,previous.meta.pagesAt);assert.equal(out.meta.reader.lastSuccessAt,stamp);assert.equal(out.meta.reader.state,'quota_paused');});
+test('an unverifiable balance is not described as exhausted',()=>{assert.equal(failureSnapshot(sample(),{units:null}).meta.reader.state,'quota_unverified');});
+test('missing account configuration is distinct from quota',()=>{assert.equal(failureSnapshot(sample(),{tokenPresent:false}).meta.reader.state,'configuration_error');});
+test('healthy collection can clear the paused status',()=>{const meta={scrapedAt:stamp,reader:{state:'ready',unitsRemaining:500}};assert.equal(readerHealth(meta,Date.parse(stamp)).paused,false);assert.equal(readerHealth(meta,Date.parse(stamp)).state,'ready');});
+test('repeated failure reporting does not duplicate warnings',()=>{const a=failureSnapshot(sample(),{units:30});const b=failureSnapshot(a,{units:30});assert.equal(b.meta.warnings.length,1);});
+test('unfunded collection is not silently enabled and no credentials are committed',()=>{const cloud=fs.readFileSync('scraper/cloud.mjs','utf8');assert.ok(cloud.includes('remaining<40'));const wrapper=fs.readFileSync('scraper/run.mjs','utf8');assert.ok(wrapper.includes('newResultsCollected: false'));assert.ok(wrapper.includes('validateSnapshot(out, config)'));assert.ok(wrapper.includes("process.argv.includes('--read-only')"));});

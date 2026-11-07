@@ -37,7 +37,7 @@ jobs:
         env:
           BROWSERLESS_TOKEN: ${{ secrets.BROWSERLESS_TOKEN }}
           SCOUT_SCHEDULED: ${{ github.event_name != 'push' && '1' || '0' }}
-        run: node scraper/cloud.mjs
+        run: node scraper/run.mjs
       - name: Schedule bounded tournament successor
         if: ${{ !cancelled() && steps.verify.outcome == 'success' }}
         env:
