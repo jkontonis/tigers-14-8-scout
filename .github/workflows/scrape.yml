@@ -5,16 +5,15 @@ on:
     branches: [main]
     paths: ['lib/**', 'api/publish.js', 'scraper/**', 'scripts/**', 'tests/**', '.github/workflows/scrape.yml', 'config.json', 'vercel.json']
   schedule:
-    # Backup trigger. The bounded hand-off below does not depend on cron firing.
-    - cron: '17 */3 6-8 11 *'
+    # Backup for the self-dispatched tournament checks. Reader enforces dates.
+    - cron: '17 * 6-8 11 *'
 permissions:
   contents: read
   id-token: write
   actions: write
 concurrency:
   group: scouting-publish
-  # A one-off catch-up may replace a paused collector waiting to hand off.
-  cancel-in-progress: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[day2-fixture-catchup]') }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 jobs:
   update:
     if: github.ref == 'refs/heads/main'
@@ -35,16 +34,7 @@ jobs:
       - name: Collect and publish scouting data
         id: collect
         continue-on-error: true
-        env:
-          BROWSERLESS_TOKEN: ${{ secrets.BROWSERLESS_TOKEN }}
-          SCOUT_SCHEDULED: ${{ github.event_name != 'push' && '1' || '0' }}
-          SCOUT_FIXTURE_CATCHUP: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[day2-fixture-catchup]') && '1' || '0' }}
-        run: |
-          if [ "$SCOUT_FIXTURE_CATCHUP" = "1" ]; then
-            node scraper/fixture-catchup.mjs
-          else
-            node scraper/run.mjs
-          fi
+        run: node scraper/public.mjs
       - name: Schedule bounded tournament successor
         if: ${{ !cancelled() && steps.verify.outcome == 'success' }}
         env:
